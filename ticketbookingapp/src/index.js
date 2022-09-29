@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NavigationBar />
-    <MoviePoster name="Jurassic Park" image="../images/jurassicpark.png"/>
+    <MoviePoster name="Jurassic Park" image="jurassicpark.png"/>
   </React.StrictMode>
   //Component Goes Here
 );
