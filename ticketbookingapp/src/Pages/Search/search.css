@@ -1,0 +1,33 @@
+ul.Carousel-NowPlaying {
+    padding-right: 1em;
+    background-color: #4B4242;
+    
+
+}
+
+
+ul.Carousel-NowPlaying > li {
+    display: inline-block;
+    
+}
+ul.Carousel-ComingSoon > li {
+    display: inline-block;
+    
+}
+
+input {
+    width:80em;
+    margin:60px;
+    padding: 10px;
+
+
+}
+
+input::placeholder {
+    font-weight: bold;
+}
+
+h2 {
+    padding-left: 1em;
+    color: #D9D9D9;
+}

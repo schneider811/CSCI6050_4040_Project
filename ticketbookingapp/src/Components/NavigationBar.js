@@ -4,7 +4,7 @@ import navigateTo from "../Pages/RenderPage";
 import SignUp from "../Pages/Signup/signup";
 import Home from "../Pages/Home/Home";
 import AdminView from "../Pages/Admin/admin";
-
+import Search from "../Pages/Search/search";
 
 
 class NavigationBar extends React.Component {
@@ -19,7 +19,7 @@ class NavigationBar extends React.Component {
                         <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
                     </li>
                     <li class="NavBarButton">
-                        <button type="button" onClick={() => {navigateTo()}}>Search</button>
+                        <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
                     </li>
                     <li class="NavBarButton">
                         <button type="button" >Contact Us</button>
