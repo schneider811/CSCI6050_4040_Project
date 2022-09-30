@@ -16,7 +16,7 @@ class NavigationBar extends React.Component {
                         <a class="NavBarItem-link" aria-label="Visit the Contact Us Page" href="/movies">Contact Us</a>
                     </li>
                     <li class="NavBarButton">
-                        <a class="NavBarItem-link" aria-label="Visit the Sign-in/Sign-up page" href="/movies">Login/Register</a>
+                        <a class="NavBarItem-link" aria-label="Visit the Sign-in/Sign-up page" href="">Login/Register</a>
                     </li>
                 </ul>
             </header>
