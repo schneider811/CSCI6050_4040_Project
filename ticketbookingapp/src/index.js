@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import MoviePoster from './Components/Movieposter';
 import NavigationBar from './Components/NavigationBar';
+import Home from './Pages/Home/Home';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
+rootHeader.render(
+  <React.StrictMode>
+    <NavigationBar/>
+  </React.StrictMode>
+)
 root.render(
   <React.StrictMode>
-    <NavigationBar />
-    <MoviePoster name="Jurassic Park" image="jurassicpark.png"/>
+    <Home/>
   </React.StrictMode>
-  //Component Goes Here
   
 );
 
@@ -22,3 +25,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export default root

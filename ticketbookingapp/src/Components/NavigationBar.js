@@ -1,27 +1,33 @@
 import React from "react";
 import "../style.css";
+import navigateTo from "../Pages/RenderPage";
+import SignUp from "../Pages/Signup/signup";
+import Home from "../Pages/Home/Home";
+
+
 
 class NavigationBar extends React.Component {
-    render(props) {
+    render() {
         return <div class="Header-NavBar">
             <header role="banner" class="Header-wrap">
                 <ul class="NavBar" role="navigation">
                     <li class="NavBarButton">
-                        <a class="NavBarItem-link" aria-label="Visit the Home Page" href="/movies">Home</a>
+                        <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
                     </li>
                     <li class="NavBarButton">
-                    <a class="NavBarItem-link" aria-label="Visit the Search List of Movies page" href="/movies">Search</a>
+                        <button type="button" onClick={() => {navigateTo()}}>Search</button>
                     </li>
                     <li class="NavBarButton">
-                        <a class="NavBarItem-link" aria-label="Visit the Contact Us Page" href="/movies">Contact Us</a>
+                        <button type="button" >Contact Us</button>
                     </li>
                     <li class="NavBarButton">
-                        <a class="NavBarItem-link" aria-label="Visit the Sign-in/Sign-up page" href="">Login/Register</a>
+                       <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
                     </li>
                 </ul>
             </header>
         </div>
     }
+    
 }
 
 export default NavigationBar

@@ -10,15 +10,20 @@ ul {
 }
   ul.NavBar > li {
     display: inline-block;
-    padding: 10px 20px;
     margin-right: 1em;
-    background-color: #BA1313;
+    background-color: #D9D9D9;
 
 }
-  ul.NavBar > li:hover {
+  ul.NavBar > li > button:hover {
     background-color: #658C3D;
 }
-  ul.NavBar > li > a {
+  ul.NavBar > li > button {
+    
+    background-color: #BA1313;
     color: white;
+    border-color: #BA1313;
+    margin: 1em;
+    padding: 1em;                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     text-decoration: none;
+
 }
