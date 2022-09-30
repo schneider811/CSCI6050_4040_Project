@@ -10,3 +10,12 @@ ul.Carousel-NowPlaying > li {
     display: inline-block;
     
 }
+ul.Carousel-ComingSoon > li {
+    display: inline-block;
+    
+}
+
+h2 {
+    padding-left: 1em;
+    color: #D9D9D9;
+}

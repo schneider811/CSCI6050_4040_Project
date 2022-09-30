@@ -21,11 +21,8 @@
 
 #signup{
     float: left;
-    height: 350px;
-    width:300px;
-
-    
-    
+    height: fit-content;
+    width:fit-content;
   
 }
 

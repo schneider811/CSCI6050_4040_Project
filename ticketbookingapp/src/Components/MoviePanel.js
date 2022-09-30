@@ -8,7 +8,7 @@ function MoviePanel(params) {
         <p class = "title"> {params.name} </p>
     
         <button class = "book"> Book</button>
-        <button class = "trailer"> Trailer</button>
+        <button class = "trailer" onClick={() => {window.open("https://www.youtube.com/watch?v=fb5ELWi-ekk");}}> Trailer</button>
     </div>;
 }
 
