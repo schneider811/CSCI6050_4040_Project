@@ -5,6 +5,7 @@ import SignUp from "../Pages/Signup/signup";
 import Home from "../Pages/Home/Home";
 import AdminView from "../Pages/Admin/admin";
 import Search from "../Pages/Search/search";
+import ProfileView from "../Pages/Profile/profile";
 
 
 class NavigationBar extends React.Component {
@@ -23,6 +24,9 @@ class NavigationBar extends React.Component {
                     </li>
                     <li class="NavBarButton">
                         <button type="button" >Contact Us</button>
+                    </li>
+                    <li class="NavBarButton">
+                       <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
                     </li>
                     <li class="NavBarButton">
                        <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>

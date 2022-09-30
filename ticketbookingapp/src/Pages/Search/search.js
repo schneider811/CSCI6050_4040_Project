@@ -1,6 +1,6 @@
 import React from "react";
 import MoviePanel from "../../Components/MoviePanel";
-import "./search.css";
+//import "./search.css";
 
 
 class Search extends React.Component {
