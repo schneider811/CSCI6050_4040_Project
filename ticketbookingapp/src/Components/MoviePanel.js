@@ -1,10 +1,10 @@
 import React from "react";
-import './MoviePosterStyling.css'
+import './MoviePanelStyle.css'
 
 
-function MoviePoster(params) {
+function MoviePanel(params) {
     return <div className = "poster">
-        <img src = {params.img}></img> 
+        <img src = {params.img} alt="Movie Poster"></img> 
         <p class = "title"> {params.name} </p>
     
         <button class = "book"> Book</button>
@@ -14,4 +14,4 @@ function MoviePoster(params) {
 
 
 
-export default MoviePoster
+export default MoviePanel

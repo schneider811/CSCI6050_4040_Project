@@ -1,0 +1,42 @@
+.poster {
+    background-color:#D9D9D9;
+    color: black;
+    height: fit-content;
+    width: 20em;
+}
+
+.title{
+    font-size: 30px;
+    padding:10px;
+    position: relative;
+    top: 80px;
+}
+
+button {
+   margin: 20px;
+   margin-top: 50px;
+   position:relative;
+   background-color: #BA1313;
+   color: white;
+   border-color: #BA1313;
+}
+
+button:hover {
+    margin: 20px;
+    margin-top: 50px;
+    position:relative;
+    background-color: #658C3D;
+    color: white;
+    border-color: #658C3D;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    display: block;
+}
+
+li.MoviePanel {
+    Padding: 1em;
+}

@@ -2,7 +2,7 @@ body {
     background-color: #4B4242;
 }
 
-ul {
+ul.NavBar {
     padding: 1em;
     background-color: #D9D9D9;
     text-align: right;
@@ -16,6 +16,7 @@ ul {
 }
   ul.NavBar > li > button:hover {
     background-color: #658C3D;
+    border-color: #658C3D;
 }
   ul.NavBar > li > button {
     

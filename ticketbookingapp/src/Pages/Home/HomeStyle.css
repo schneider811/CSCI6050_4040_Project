@@ -1,0 +1,12 @@
+ul.Carousel-NowPlaying {
+    padding-right: 1em;
+    background-color: #4B4242;
+    
+
+}
+
+
+ul.Carousel-NowPlaying > li {
+    display: inline-block;
+    
+}
