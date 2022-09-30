@@ -1,0 +1,52 @@
+
+#control {
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:15%;
+
+    background-color: #D9D9D9;
+
+    height:500px;
+    width: 1000px;
+
+    text-align: center;
+
+    
+}
+
+#header {
+    list-style:none;
+    text-align:left;
+    background-color: #BA1313;
+
+}
+
+#header li {
+    display:inline-block;
+    margin-right: 20px;
+    color: white;
+}
+
+
+#info {
+    text-align:left;
+    margin-top:60px;
+    margin-left: 50px
+}
+
+#info li {
+    list-style:none;
+
+}
+
+#info p {
+    font-weight:bold;
+    border-style:dotted;
+}
+
+#info a {
+    color: #7C0C0C;
+    text-decoration:underline;
+}
+
