@@ -13,7 +13,7 @@
 }
 
 .box-header{
-    background-color:#BA1313;
+    background-color:var(--theatreRed);
     color:#FFFFFF;
     text-align:center;
     

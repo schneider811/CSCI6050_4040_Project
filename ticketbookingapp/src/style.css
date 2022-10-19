@@ -20,9 +20,9 @@ ul.NavBar {
 }
   ul.NavBar > li > button {
     
-    background-color: #BA1313;
+    background-color: var(--theatreRed);
     color: white;
-    border-color: #BA1313;
+    border-color: var(--theatreRed);
     margin: 1em;
     padding: 1em;                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     text-decoration: none;

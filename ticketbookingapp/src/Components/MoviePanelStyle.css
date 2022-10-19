@@ -16,9 +16,9 @@ button {
    margin: 20px;
    margin-top: 50px;
    position:relative;
-   background-color: #BA1313;
+   background-color: var(--theatreRed);
    color: white;
-   border-color: #BA1313;
+   border-color: var(--theatreRed);
 }
 
 button:hover {
