@@ -18,7 +18,7 @@
 #header {
     list-style:none;
     text-align:left;
-    background-color: #BA1313;
+    background-color: var(--theatreRed);
 
 }
 
