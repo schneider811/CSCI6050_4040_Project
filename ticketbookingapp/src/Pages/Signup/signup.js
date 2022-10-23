@@ -1,11 +1,15 @@
 import React from "react"
 import "../../style.css"
 import "./signup.css"
+import Panel from "../../Components/Panel";
 
+
+/*
 class SignUp extends React.Component {
     render() {
         return (
             <div>
+
                 <div class = "input-box" id="signup">
 
                 <div class="box-header">
@@ -13,7 +17,7 @@ class SignUp extends React.Component {
                 </div>
 
 
-                <form/>
+                <form>
                     <label for="email"> Email: *</label><br/>
                     <input type="text" id="email" name="email"/><br/>
                     <label for="fname">First name: *</label><br/>
@@ -61,7 +65,18 @@ class SignUp extends React.Component {
 
                 <div/>
                 </div>
+
+                
             </div>
+        );
+    }
+}
+*/
+
+class SignUp extends React.Component {
+    render() {
+        return (
+            <Panel></Panel>
         );
     }
 }
