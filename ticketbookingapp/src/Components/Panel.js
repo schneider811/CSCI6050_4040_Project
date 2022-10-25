@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import React from "react";
+import Axios from 'axios'
+import {useState} from 'react';
 import './Panel.css'
 
 
@@ -27,8 +29,27 @@ function Panel() {
     
     });
     
-    return(
+    const [emailReg, setEmailReg] = useState('')
+    const [firstnameReg, setFirstnameReg] = useState('')
+    const [lastnameReg, setLastnameReg] = useState('')
+    const [passwordReg, setPasswordReg] = useState('')
+    const [birthdateReg, setBirthdateReg] = useState('')
+   
+    const register = () => {
+        Axios.post('https://localhost:3001/register', {
+
+        email: emailReg,
+        first_name: firstnameReg,
+        last_name: lastnameReg,
+        password: passwordReg,
+        birthDate: birthdateReg
         
+        }).then((response) => {
+            console.log(response);
+        });
+    };
+
+    return(
         
         <div class = "container">
             
@@ -39,19 +60,39 @@ function Panel() {
                 
                 <form>
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"/><br/>
+                    <input type="text" id="email" name="email"
+                        onChange = {(e) => {
+                            setEmailReg(e.target.value);
+                        }}
+                    /><br/>
 
-                    
                     <label for="fname">First name: *</label><br/>
-                    <input type="text" id="fname" name="fname"/><br/>
+                    <input type="text" id="fname" name="fname"
+                        onChange = {(e) => {
+                            setFirstnameReg(e.target.value);
+                        }}
+                    /><br/>
+
                     <label for="lname">Last name: *</label><br/>
-                    <input type="text" id="lname" name="lname"/><br/>
+                    <input type="text" id="lname" name="lname"
+                        onChange = {(e) => {
+                            setLastnameReg(e.target.value);
+                        }}
+                    /><br/>
 
                     <label for="birthday">Birthday: *</label> <br/>
-                    <input type="date" id="birthday" name="birthday"/><br/>
+                    <input type="date" id="birthday" name="birthday"
+                        onChange = {(e) => {
+                            setBirthdateReg(e.target.value);
+                        }}
+                    /><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"/><br/>
+                    <input type="password" id="pswd" name="pswd"
+                        onChange = {(e) => {
+                            setPasswordReg(e.target.value);
+                        }}
+                    /><br/>
 
                     <input type="radio" id="terms" name="terms"/>
                     <label for="terms"> I agree to the terms and conditions *</label> <br/>
@@ -61,7 +102,7 @@ function Panel() {
 
                     <p>* indicates that the field is requried when creating an account</p>
 
-                    <button> Submit </button>
+                    <button onClick={register}> Submit </button>
 
                 </form>
                 
