@@ -13,9 +13,9 @@ class NavigationBar extends React.Component {
         return <div class="Header-NavBar">
             <header role="banner" class="Header-wrap">
                 <ul class="NavBar" role="navigation">
-                    <li class="NavBarButton">
+                    {/* <li class="NavBarButton">
                         <button type="button" onClick={() => {navigateTo(AdminView)}}>AdminView</button>
-                    </li>
+                    </li> */}
                     <li class="NavBarButton">
                         <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
                     </li>

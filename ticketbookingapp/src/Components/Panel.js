@@ -37,25 +37,6 @@ function Panel() {
     var testText = "";
     
 
-    // const register = () => {
-
-    //     console.log("Potatos");
-    //     const response = await Axios.put(
-    //         "http://localhost:3001/register", 
-    //         {
-    //             email: emailReg,
-    //             first_name: firstnameReg,
-    //             last_name: lastnameReg,
-    //             password: passwordReg,
-    //             birthDate: birthdateReg
-    //         }
-    //     );
-    //                 // }, 
-    //     // (error) => {
-    //     //     console.log("Error: ");
-    //     //     console.log(error);
-        
-    // };
 
     return(
         
