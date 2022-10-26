@@ -1,11 +1,13 @@
 import $ from 'jquery';
 import React from "react";
 import Axios from 'axios'
-import {useState} from 'react';
 import './Panel.css'
 
-
-
+var emailReg;
+var firstnameReg;
+var lastnameReg;
+var passwordReg;
+var birthdateReg;
 
 function Panel() {
 
@@ -26,28 +28,36 @@ function Panel() {
             $(".left").css("background", "#7C0C0C");
             $(".right").css("background", "#BA1313");
         });
+
+        
+        $(".submitReg").click(function(e) {
+            e.preventDefault();
+        });
     
     });
-    
-    const [emailReg, setEmailReg] = useState('')
-    const [firstnameReg, setFirstnameReg] = useState('')
-    const [lastnameReg, setLastnameReg] = useState('')
-    const [passwordReg, setPasswordReg] = useState('')
-    const [birthdateReg, setBirthdateReg] = useState('')
-   
-    const register = () => {
-        Axios.post('https://localhost:3001/register', {
 
-        email: emailReg,
-        first_name: firstnameReg,
-        last_name: lastnameReg,
-        password: passwordReg,
-        birthDate: birthdateReg
+    var testText = "";
+    
+
+    // const register = () => {
+
+    //     console.log("Potatos");
+    //     const response = await Axios.put(
+    //         "http://localhost:3001/register", 
+    //         {
+    //             email: emailReg,
+    //             first_name: firstnameReg,
+    //             last_name: lastnameReg,
+    //             password: passwordReg,
+    //             birthDate: birthdateReg
+    //         }
+    //     );
+    //                 // }, 
+    //     // (error) => {
+    //     //     console.log("Error: ");
+    //     //     console.log(error);
         
-        }).then((response) => {
-            console.log(response);
-        });
-    };
+    // };
 
     return(
         
@@ -62,35 +72,35 @@ function Panel() {
                     <label for="email"> Email: *</label><br/>
                     <input type="text" id="email" name="email"
                         onChange = {(e) => {
-                            setEmailReg(e.target.value);
+                            emailReg = e.target.value;
                         }}
-                    /><br/>
+                    />{testText}<br/>
 
                     <label for="fname">First name: *</label><br/>
                     <input type="text" id="fname" name="fname"
                         onChange = {(e) => {
-                            setFirstnameReg(e.target.value);
+                            firstnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="lname">Last name: *</label><br/>
                     <input type="text" id="lname" name="lname"
                         onChange = {(e) => {
-                            setLastnameReg(e.target.value);
+                            lastnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="birthday">Birthday: *</label> <br/>
                     <input type="date" id="birthday" name="birthday"
                         onChange = {(e) => {
-                            setBirthdateReg(e.target.value);
+                            birthdateReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="pswd">Password: *</label><br/>
                     <input type="password" id="pswd" name="pswd"
                         onChange = {(e) => {
-                            setPasswordReg(e.target.value);
+                            passwordReg = e.target.value;
                         }}
                     /><br/>
 
@@ -102,7 +112,7 @@ function Panel() {
 
                     <p>* indicates that the field is requried when creating an account</p>
 
-                    <button onClick={register}> Submit </button>
+                    <button onClick={registerUser} class="submitReg"> Submit </button>
 
                 </form>
                 
@@ -135,5 +145,22 @@ function Panel() {
         
     );
 }
+
+
+async function registerUser() {
+    const newUser = {
+        email: emailReg,
+        first_name: firstnameReg,
+        last_name: lastnameReg,
+        password: passwordReg,
+        birthDate: birthdateReg
+    }
+
+    const response = await Axios.post("http://localhost:3001/register", newUser);
+    console.log("Potato");
+    console.log(response.data);
+    
+}
+
 
 export default Panel
