@@ -30,9 +30,7 @@ function Panel() {
         });
 
         
-        $(".submitReg").click(function(e) {
-            e.preventDefault();
-        });
+        
     
     });
 
@@ -93,7 +91,7 @@ function Panel() {
                     <label for="birthday">Birthday: *</label> <br/>
                     <input type="date" id="birthday" name="birthday"
                         onChange = {(e) => {
-                            birthdateReg = e.target.value;
+                            birthdateReg = e.target.valueAsNumber;
                         }}
                     /><br/>
 
@@ -153,7 +151,8 @@ async function registerUser() {
         first_name: firstnameReg,
         last_name: lastnameReg,
         password: passwordReg,
-        birthDate: birthdateReg
+        birthdate: birthdateReg
+
     }
 
     const response = await Axios.post("http://localhost:3001/register", newUser);

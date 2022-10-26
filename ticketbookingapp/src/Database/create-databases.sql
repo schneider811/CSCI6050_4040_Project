@@ -83,13 +83,13 @@ CREATE TABLE users(
   user_id int NOT NULL AUTO_INCREMENT,
   first_name TEXT not null,
   last_name TEXT not null,
-  phone int not null,
+  phone bigint not null,
   email TEXT not null,
   pword varchar(255) not null,
   payment_id int null,
   status_id int null,
   acc_type_id int not null,
-  birthdate int not null,
+  birthdate bigint not null,
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 SET FOREIGN_KEY_CHECKS=1;
