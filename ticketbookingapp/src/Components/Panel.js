@@ -1,9 +1,13 @@
 import $ from 'jquery';
 import React from "react";
+import Axios from 'axios'
 import './Panel.css'
 
-
-
+var emailReg;
+var firstnameReg;
+var lastnameReg;
+var passwordReg;
+var birthdateReg;
 
 function Panel() {
 
@@ -24,11 +28,38 @@ function Panel() {
             $(".left").css("background", "#7C0C0C");
             $(".right").css("background", "#BA1313");
         });
+
+        
+        $(".submitReg").click(function(e) {
+            e.preventDefault();
+        });
     
     });
+
+    var testText = "";
     
-    return(
+
+    // const register = () => {
+
+    //     console.log("Potatos");
+    //     const response = await Axios.put(
+    //         "http://localhost:3001/register", 
+    //         {
+    //             email: emailReg,
+    //             first_name: firstnameReg,
+    //             last_name: lastnameReg,
+    //             password: passwordReg,
+    //             birthDate: birthdateReg
+    //         }
+    //     );
+    //                 // }, 
+    //     // (error) => {
+    //     //     console.log("Error: ");
+    //     //     console.log(error);
         
+    // };
+
+    return(
         
         <div class = "container">
             
@@ -39,19 +70,39 @@ function Panel() {
                 
                 <form>
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"/><br/>
+                    <input type="text" id="email" name="email"
+                        onChange = {(e) => {
+                            emailReg = e.target.value;
+                        }}
+                    />{testText}<br/>
 
-                    
                     <label for="fname">First name: *</label><br/>
-                    <input type="text" id="fname" name="fname"/><br/>
+                    <input type="text" id="fname" name="fname"
+                        onChange = {(e) => {
+                            firstnameReg = e.target.value;
+                        }}
+                    /><br/>
+
                     <label for="lname">Last name: *</label><br/>
-                    <input type="text" id="lname" name="lname"/><br/>
+                    <input type="text" id="lname" name="lname"
+                        onChange = {(e) => {
+                            lastnameReg = e.target.value;
+                        }}
+                    /><br/>
 
                     <label for="birthday">Birthday: *</label> <br/>
-                    <input type="date" id="birthday" name="birthday"/><br/>
+                    <input type="date" id="birthday" name="birthday"
+                        onChange = {(e) => {
+                            birthdateReg = e.target.value;
+                        }}
+                    /><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"/><br/>
+                    <input type="password" id="pswd" name="pswd"
+                        onChange = {(e) => {
+                            passwordReg = e.target.value;
+                        }}
+                    /><br/>
 
                     <input type="radio" id="terms" name="terms"/>
                     <label for="terms"> I agree to the terms and conditions *</label> <br/>
@@ -61,7 +112,7 @@ function Panel() {
 
                     <p>* indicates that the field is requried when creating an account</p>
 
-                    <button> Submit </button>
+                    <button onClick={registerUser} class="submitReg"> Submit </button>
 
                 </form>
                 
@@ -94,5 +145,22 @@ function Panel() {
         
     );
 }
+
+
+async function registerUser() {
+    const newUser = {
+        email: emailReg,
+        first_name: firstnameReg,
+        last_name: lastnameReg,
+        password: passwordReg,
+        birthDate: birthdateReg
+    }
+
+    const response = await Axios.post("http://localhost:3001/register", newUser);
+    console.log("Potato");
+    console.log(response.data);
+    
+}
+
 
 export default Panel
