@@ -8,12 +8,17 @@ import './ProfilePanel.css'
 
 function ProfilePanel() {
 
+    // Temporary input variables
     var tempFNameText = "Manal";
     var tempLNameText = "Patel";
     var tempEmailText = "manal1410@gmail.com";
     var tempBDayText = "09-22-2010";
     var tempPswdText = "genericPD123";
+    var tempPhone = "No phone number on account"
+    var tempProm = "Enabled"
+    var tempAddress = "No billing address on account"
 
+    // Menu Transition
     $(document).ready(function(){
         $(".payment-info").hide();
         $(".settings").hide();
@@ -65,8 +70,32 @@ function ProfilePanel() {
     
     });
 
+    // Credit Card carousel
+    document.querySelectorAll(".carousel").forEach(carousel => {
+        const items = carousel.querySelectorAll(".carousel_card");
+        const buttonsHtml = Array.from(items, () => {
+            return `<span class = "carousel_btn"></span>`;
+        });
 
+        console.log(buttonsHtml);
+
+        carousel.insertAdjacentHTML("beforeend", `
+            '<div class = "carousel_nav">
+                ${buttonsHtml.join("")}
+            </div>
+        `);
+
+        const buttons = carousel.querySelectorAll(".carousel_btn");
+        
+        buttons.forEach((button, i) => {
+            button.addEventListener("click", () => {
+                items.forEach(item => item.classList.remove("carousel_card--selected"));
+                buttons.forEach(button => button.classList.remove("carousel_btn--selected"));
+            });
+        });
+    });
     
+    // HTML code
     return(
         <div class = "container">
             
@@ -86,11 +115,13 @@ function ProfilePanel() {
                     <label for="lnametxt">Last name: *</label><br/>
                     <input type="text" id="lnamefield" name="lname" placeholder={tempLNameText}/><br/>
 
-                    <label for="birthdaytxt">Birthday: *</label> <br/>
-                    <input type="date" id="birthdayfield" name="birthday" placeholder={tempBDayText}/><br/>
+                    <label for = "birthdate"> Birthday: * </label><br/>
+                    <label for = "birthdate-info"/> {tempBDayText} <br/>
 
-                    <label for="pswdtxt">Password: *</label><br/>
-                    <input type="password" id="pswdfield" name="pswd" placeholder={tempPswdText}/><br/>
+                    <label for="password">Current Password: *</label><br/>
+                    <input type="password" id="currpswd" name="pswd"/><br/>
+                    <label for="pswdtxt">New Password: *</label><br/>
+                    <input type="password" id="newpswd" name="pswd"/><br/>
 
                     <input type="checkbox" id="promsbox" name="proms"/>
                     <label for="proms"> Subscribe to the email list for promotions</label>
@@ -100,7 +131,7 @@ function ProfilePanel() {
 
             <div class="profile-info">
                 <form>
-                <label for="email"> Email: </label>
+                    <label for="email"> Email: </label>
                     <label for="email-info"/>{tempEmailText}<br/>
 
                     <label for="fname">First name: </label>
@@ -114,36 +145,72 @@ function ProfilePanel() {
                     <label for="pswdtxt">Password: </label>
                     <label id="pswdDB"/>{tempPswdText}<br/>
 
-                    <input type="checkbox" id="promsDB" name="proms"/>
-                    <label for="proms"> Status of their promo subscriptions</label>
+                    <label for="phone">Phone Number: </label>
+                    <label id = "phoneDB"/> {tempPhone}<br/>
+                    
+                    <label for="prom">Promotions: </label>
+                    <label id = "promDB"/> {tempProm}<br/>
+
                     <button class="edit-profile-btn"> Edit Profile </button>
                 </form>
             </div>
 
             <div class ="payment-info">
-                <form>
-                    <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"/><br/>
 
-                    <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"/><br/>
+                <div class = "billing-info">
 
-                    <input type="radio" id="terms" name="terms"/>
-                    <label for="sign"> Keep me signed in</label> <br/>
-                    <p>* indicates that the field is requried when logging in</p>
+                    <label for="billing-add">Billing Address: </label>
+                    <button class = "edit-bill-btn"> Edit Billing Address</button>
+                    <p>{tempAddress}</p> 
 
+
+                </div>
+
+                <div class = "card-info">
+                    <label for="pay-card">Current Cards: </label>
                     <button> Add New Card</button>
-                </form>
+                    <div class = "carousel">
+                        <div class = "carousel_card carousel_card--selected"> 
+                            Visa ****4569
+                            04/25
+                        </div>
+
+                        <div class = "carousel_card">
+                            Mastercard ****6872
+                            02/23
+                        </div>
+
+                        <div class = "carousel_nav">
+                            <span class = "carousel_btn carousel_btn--selected"></span>
+                            <span class = "carousel_btn"></span>
+                        </div>
+                    </div>
+
+     
+
+                
+
+
+
+
+
+
+
+
+
+                </div>
+               
+             
             </div>
             
             <div class="settings">
-            <p>Check this box to confirm that you would like to delete your account!</p><br></br>
-            <form>
-                <label for="proms"> I would like to delete my ticket booking account</label>
-                <input type="checkbox" id="proms" name="proms"/><br></br>
-                <br></br>
-                <button> Delete Account</button>
-            </form>
+                <p>Check this box to confirm that you would like to delete your account!</p><br></br>
+                <form>
+                    <label for="proms"> I would like to delete my ticket booking account</label>
+                    <input type="checkbox" id="proms" name="proms"/><br></br>
+                    <br></br>
+                    <button> Delete Account</button>
+                </form>
             </div>
 
         </div>
