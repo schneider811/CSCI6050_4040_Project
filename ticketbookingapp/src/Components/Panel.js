@@ -37,59 +37,63 @@ function Panel() {
     var testText = "";
     
 
-
     return(
         
         <div class = "container">
-            
+
+            <div id = "error"> </div>
+
             <div class = "left"> Sign Up</div>
             <div class = "right"> Login In</div>
 
             <div class = "bottom-left">
                 
-                <form>
+                <form action =  "/" method = "GET" id = "form">
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"
+
+                    <input required type="text" id="email" name="email"
                         onChange = {(e) => {
                             emailReg = e.target.value;
                         }}
                     />{testText}<br/>
 
+
                     <label for="fname">First name: *</label><br/>
-                    <input type="text" id="fname" name="fname"
+
+                    <input required type="text" id="fname" name="fname"
                         onChange = {(e) => {
                             firstnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="lname">Last name: *</label><br/>
-                    <input type="text" id="lname" name="lname"
+                    <input required type="text" id="lname" name="lname"
                         onChange = {(e) => {
                             lastnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="birthday">Birthday: *</label> <br/>
-                    <input type="date" id="birthday" name="birthday"
+                    <input required type="date" id="birthday" name="birthday"
                         onChange = {(e) => {
                             birthdateReg = e.target.valueAsNumber;
                         }}
                     /><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"
+                    <input required type="password" id="pswd" name="pswd"
                         onChange = {(e) => {
                             passwordReg = e.target.value;
                         }}
                     /><br/>
 
-                    <input type="radio" id="terms" name="terms"/>
+                    <input required type="checkbox" id="terms" name="terms" />
                     <label for="terms"> I agree to the terms and conditions *</label> <br/>
 
                     <input type="checkbox" id="proms" name="proms"/>
                     <label for="proms"> Subscribe to the email list for promotions</label>
 
-                    <p>* indicates that the field is requried when creating an account</p>
+                    <p>* indicates that the field is required when creating an account</p>
 
                     <button onClick={registerUser} class="submitReg"> Submit </button>
 
@@ -100,18 +104,18 @@ function Panel() {
 
             <div class = "bottom-right">
                 
-                <form>
+                <form action = "/" method = "GET">
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"/><br/>
+                    <input type="text" id="email" name="email" required/><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"/><br/>
+                    <input type="password" id="pswd" name="pswd" required/><br/>
 
-                    <input type="radio" id="terms" name="terms"/>
+                    <input type="checkbox" id="terms" name="terms"/>
                     <label for="sign"> Keep me signed in</label> <br/>
                     <p>* indicates that the field is requried when logging in</p>
 
-                    <button> Submit</button>
+                    <button type = "submit"> Submit</button>
                 </form>
 
 
@@ -137,8 +141,9 @@ async function registerUser() {
     }
 
     const response = await Axios.post("http://localhost:3001/register", newUser);
-    console.log("Potato");
-    console.log(response.data);
+    const confirm = await Axios.post("http://localhost:3001/email", newUser);
+
+
     
 }
 

@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require("express");
 const app = express();
 var mysql = require('mysql');
+const nodemailer = require('nodemon');
 const port = 3001;
 var user_id = 0;
 
@@ -36,6 +37,44 @@ app.post('/register', (req, res) =>  {
     user_id += 1;
     res.send(req.body);
     registerUser(req.body,db);
+
+});
+
+
+app.post('/email', async (req, res) => {
+    if(err) throw err;
+    res.send('Confirmation Email Sent');
+    const {email} = req.body.email;
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+        user: 'julie.rolfson28@ethereal.email', // generated ethereal user
+        pass: '[D3UGHBFK68ExqF9znT', // generated ethereal password
+        },
+    });
+
+
+    // send mail with defined transport object
+    const msg = {
+        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        to: `${email}`, // list of receivers
+        subject: "Confirmation of Account", // Subject line
+        text: "Hello, this is confirmation that your account has been registered!" // plain text body
+    }
+
+    let info = await transporter.sendMail(msg);
+
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+
 
 });
 
