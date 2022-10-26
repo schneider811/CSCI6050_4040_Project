@@ -30,35 +30,12 @@ function Panel() {
         });
 
         
-        $(".submitReg").click(function(e) {
-            e.preventDefault();
-        });
+        
     
     });
 
     var testText = "";
     
-
-    // const register = () => {
-
-    //     console.log("Potatos");
-    //     const response = await Axios.put(
-    //         "http://localhost:3001/register", 
-    //         {
-    //             email: emailReg,
-    //             first_name: firstnameReg,
-    //             last_name: lastnameReg,
-    //             password: passwordReg,
-    //             birthDate: birthdateReg
-    //         }
-    //     );
-    //                 // }, 
-    //     // (error) => {
-    //     //     console.log("Error: ");
-    //     //     console.log(error);
-
-
-    // };
 
     return(
         
@@ -74,45 +51,43 @@ function Panel() {
                 <form action =  "/" method = "GET" id = "form">
                     <label for="email"> Email: *</label><br/>
 
-                    <input type="text" id="email" name="email"
+                    <input required type="text" id="email" name="email"
                         onChange = {(e) => {
                             emailReg = e.target.value;
                         }}
                     />{testText}<br/>
 
-                    <input type="text" id="email" name="email" required/><br/>
-
 
                     <label for="fname">First name: *</label><br/>
 
-                    <input type="text" id="fname" name="fname"
+                    <input required type="text" id="fname" name="fname"
                         onChange = {(e) => {
                             firstnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="lname">Last name: *</label><br/>
-                    <input type="text" id="lname" name="lname"
+                    <input required type="text" id="lname" name="lname"
                         onChange = {(e) => {
                             lastnameReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="birthday">Birthday: *</label> <br/>
-                    <input type="date" id="birthday" name="birthday"
+                    <input required type="date" id="birthday" name="birthday"
                         onChange = {(e) => {
                             birthdateReg = e.target.value;
                         }}
                     /><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"
+                    <input required type="password" id="pswd" name="pswd"
                         onChange = {(e) => {
                             passwordReg = e.target.value;
                         }}
                     /><br/>
 
-                    <input type="checkbox" id="terms" name="terms" required/>
+                    <input required type="checkbox" id="terms" name="terms" />
                     <label for="terms"> I agree to the terms and conditions *</label> <br/>
 
                     <input type="checkbox" id="proms" name="proms"/>
