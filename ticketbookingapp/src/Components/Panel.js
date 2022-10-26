@@ -165,8 +165,9 @@ async function registerUser() {
     }
 
     const response = await Axios.post("http://localhost:3001/register", newUser);
-    console.log("Potato");
-    console.log(response.data);
+    const confirm = await Axios.post("http://localhost:3001/email", newUser);
+
+
     
 }
 
