@@ -56,27 +56,35 @@ function Panel() {
     //     // (error) => {
     //     //     console.log("Error: ");
     //     //     console.log(error);
-        
+
+
     // };
 
     return(
         
         <div class = "container">
-            
+
+            <div id = "error"> </div>
+
             <div class = "left"> Sign Up</div>
             <div class = "right"> Login In</div>
 
             <div class = "bottom-left">
                 
-                <form>
+                <form action =  "/" method = "GET" id = "form">
                     <label for="email"> Email: *</label><br/>
+
                     <input type="text" id="email" name="email"
                         onChange = {(e) => {
                             emailReg = e.target.value;
                         }}
                     />{testText}<br/>
 
+                    <input type="text" id="email" name="email" required/><br/>
+
+
                     <label for="fname">First name: *</label><br/>
+
                     <input type="text" id="fname" name="fname"
                         onChange = {(e) => {
                             firstnameReg = e.target.value;
@@ -104,13 +112,13 @@ function Panel() {
                         }}
                     /><br/>
 
-                    <input type="radio" id="terms" name="terms"/>
+                    <input type="checkbox" id="terms" name="terms" required/>
                     <label for="terms"> I agree to the terms and conditions *</label> <br/>
 
                     <input type="checkbox" id="proms" name="proms"/>
                     <label for="proms"> Subscribe to the email list for promotions</label>
 
-                    <p>* indicates that the field is requried when creating an account</p>
+                    <p>* indicates that the field is required when creating an account</p>
 
                     <button onClick={registerUser} class="submitReg"> Submit </button>
 
@@ -121,18 +129,18 @@ function Panel() {
 
             <div class = "bottom-right">
                 
-                <form>
+                <form action = "/" method = "GET">
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email"/><br/>
+                    <input type="text" id="email" name="email" required/><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd"/><br/>
+                    <input type="password" id="pswd" name="pswd" required/><br/>
 
-                    <input type="radio" id="terms" name="terms"/>
+                    <input type="checkbox" id="terms" name="terms"/>
                     <label for="sign"> Keep me signed in</label> <br/>
                     <p>* indicates that the field is requried when logging in</p>
 
-                    <button> Submit</button>
+                    <button type = "submit"> Submit</button>
                 </form>
 
 
