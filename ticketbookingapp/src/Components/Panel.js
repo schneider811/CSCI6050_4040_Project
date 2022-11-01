@@ -9,6 +9,9 @@ var lastnameReg;
 var passwordReg;
 var birthdateReg;
 
+var emailLog;
+var passwordLog;
+
 function Panel() {
 
     $(document).ready(function(){
@@ -106,16 +109,24 @@ function Panel() {
                 
                 <form action = "/" method = "GET">
                     <label for="email"> Email: *</label><br/>
-                    <input type="text" id="email" name="email" required/><br/>
+                    <input type="text" id="email" name="email" required
+                        onChange = {(e) => {
+                            emailLog = e.target.value;
+                        }}
+                    /><br/>
 
                     <label for="pswd">Password: *</label><br/>
-                    <input type="password" id="pswd" name="pswd" required/><br/>
+                    <input type="password" id="pswd" name="pswd" required
+                        onChange = {(e) => {
+                            passwordLog = e.target.value;
+                        }}
+                    /><br/>
 
                     <input type="checkbox" id="terms" name="terms"/>
                     <label for="sign"> Keep me signed in</label> <br/>
                     <p>* indicates that the field is requried when logging in</p>
 
-                    <button type = "submit"> Submit</button>
+                    <button onClick={loginUser} type = "submit"> Submit</button>
                 </form>
 
 
@@ -137,15 +148,29 @@ async function registerUser() {
         last_name: lastnameReg,
         password: passwordReg,
         birthdate: birthdateReg
+    }
 
+    const prevUser = {
+        email: emailLog,
+        password: passwordLog
     }
 
     const response = await Axios.post("http://localhost:3001/register", newUser);
     const confirm = await Axios.post("http://localhost:3001/email", newUser);
-
-
+    //const loginResponse = await Axios.post("http://localhost:3001/login", prevUser);
     
 }
+
+async function loginUser() {
+    const loggingUser = {
+        email: emailLog,
+        password: passwordLog
+    }
+    
+    const loginResponse = await Axios.post("http://localhost:3001/login", loggingUser);
+
+}
+
 
 
 export default Panel

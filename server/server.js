@@ -4,11 +4,21 @@ const express = require("express");
 const app = express();
 var mysql = require('mysql');
 const nodemailer = require('nodemon');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 const port = 3001;
 var user_id = 0;
+const oneDay = 1000 * 60 * 60 * 24;
 
 app.use(express.json());
 app.use(cors());
+app.use(sessions({
+    secret: "thisisthekeyforthecsci4050project",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false
+}))
+app.use(cookieParser());
 
 const db = mysql.createConnection({
 
@@ -23,14 +33,6 @@ app.set("port", process.env.PORT || port);
 db.connect(function(err) {
     if(err) throw err;
     console.log("Connected!");
-    
-    // db.query(
-    //     "INSERT INTO users (user_id, first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    //     [3, req.body.first_name, req.body.last_name, 14567, req.body.email, 1, 2, 3, req.body.password, 15877], 
-    //     (err, res) => {
-    //         console.log(err);
-    //     }
-    // )
 });
 
 app.post('/register', (req, res) =>  {
@@ -38,6 +40,18 @@ app.post('/register', (req, res) =>  {
     res.send(req.body);
     registerUser(req.body,db);
 
+});
+
+app.post('/login', (req, res) =>  {
+    
+    res.send(req.body.first_name);
+    loginUser(req.body,db);
+
+});
+
+app.post('/logout',(req,res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 
@@ -88,13 +102,19 @@ app.listen(port, () => {
 function registerUser(userData, database) {
     database.query(
         "INSERT INTO users (user_id, first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [user_id, userData.first_name, userData.last_name, 2292549871, userData.email, 1, 2, 3, userData.password, userData.birthdate], 
+        [user_id, userData.first_name, userData.last_name, 0, userData.email, 1, 2, 3, userData.password, userData.birthdate], 
         (err, res) => {
-            console.log(err);
+           // console.log(err);
         }
     )
 }
 
 function loginUser(userData, database) {
-
+    database.query(
+        "SELECT (?) from users", [userData.email],
+        (err, res) => {
+            //console.log(err);
+            console.log(res);
+        }
+    )
 }

@@ -175,11 +175,6 @@ function ProfilePanel() {
                             04/25
                         </div>
 
-                        <div class = "carousel_card">
-                            Mastercard ****6872
-                            02/23
-                        </div>
-
                         <div class = "carousel_nav">
                             <span class = "carousel_btn carousel_btn--selected"></span>
                             <span class = "carousel_btn"></span>
