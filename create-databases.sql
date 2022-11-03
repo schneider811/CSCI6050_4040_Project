@@ -69,6 +69,19 @@ CREATE TABLE accountstatus(
 INSERT INTO accountstatus VALUES (1, 'active');
 INSERT INTO accountstatus VALUES (2, 'inactive');
 
+CREATE TABLE users(
+  user_id int NOT NULL AUTO_INCREMENT,
+  first_name TEXT not null,
+  last_name TEXT not null,
+  phone int not null,
+  email TEXT not null,
+  status_id int not null,
+  acc_type_id int not null,
+  PRIMARY KEY (user_id),
+  foreign key (status_id) references accountstatus(status_id),
+  foreign key (acc_type_id) references accounttype(acc_type_id)  
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE paymentcard(
   payment_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
@@ -76,21 +89,7 @@ CREATE TABLE paymentcard(
   billing_add text not null,
   exp_date text not null,
   PRIMARY KEY (payment_id)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE users(
-  user_id int NOT NULL AUTO_INCREMENT,
-  first_name TEXT not null,
-  last_name TEXT not null,
-  phone int not null,
-  email TEXT not null,
-  payment_id int not null,
-  status_id int not null,
-  acc_type_id int not null,
-  PRIMARY KEY (user_id),
-  foreign key (payment_id) references paymentcard(payment_id),
-  foreign key (status_id) references accountstatus(status_id),
-  foreign key (acc_type_id) references accounttype(acc_type_id)  
+  foreign key (user_id) references users(user_id),
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE promotion(
