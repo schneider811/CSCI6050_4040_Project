@@ -12,7 +12,9 @@ class NavigationBar extends React.Component {
     render() {
         return <div class="Header-NavBar">
             <header role="banner" class="Header-wrap">
+                <h1 class = "pulsate"> Retro Cinema</h1>
                 <ul class="NavBar" role="navigation">
+
                     {/* <li class="NavBarButton">
                         <button type="button" onClick={() => {navigateTo(AdminView)}}>AdminView</button>
                     </li> */}
