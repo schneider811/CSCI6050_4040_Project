@@ -51,8 +51,7 @@ function AdminPanel() {
             $(".left").css("background", "#b1a37a");
         });
 
-
-
+        
 
         
         

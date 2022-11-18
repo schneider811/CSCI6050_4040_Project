@@ -18,7 +18,8 @@
     font-size: 30px;
     padding:10px;
     position: relative;
-    top: 80px;
+    margin-left: 10px;
+    margin-bottom: -10px;
     font-family: 'Alatsi';
 
 }
@@ -44,10 +45,19 @@ button:hover {
 img {
     width: auto;
     height: auto;
-    max-width: 200px;
     display: block;
 }
 
 li.MoviePanel {
     Padding: 1em;
+}
+
+.ratings {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: -30px;
+}
+
+.fa {
+    color: orange;
 }
