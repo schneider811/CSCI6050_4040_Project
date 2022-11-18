@@ -10,6 +10,8 @@ const port = 3001;
 var user_id = 0;
 const oneDay = 1000 * 60 * 60 * 24;
 
+var session;
+
 app.use(express.json());
 app.use(cors());
 app.use(sessions({
@@ -35,6 +37,7 @@ db.connect(function(err) {
     console.log("Connected!");
 });
 
+// Database Access
 app.post('/register', (req, res) =>  {
     user_id += 1;
     res.send(req.body);
@@ -44,9 +47,7 @@ app.post('/register', (req, res) =>  {
 
 app.post('/login', (req, res) =>  {
     
-    res.send(req.body.first_name);
-    loginUser(req.body,db);
-
+    res.send(loginUser(req.body,db));
 });
 
 app.post('/logout',(req,res) => {
@@ -99,22 +100,28 @@ app.listen(port, () => {
 
 
 
-function registerUser(userData, database) {
-    database.query(
+async function registerUser(userData, database) {
+    await database.query(
         "INSERT INTO users (user_id, first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [user_id, userData.first_name, userData.last_name, 0, userData.email, 1, 2, 3, userData.password, userData.birthdate], 
+        [user_id, userData.first_name, userData.last_name, 0, userData.email, 0, 1, 3, userData.password, userData.birthdate], 
         (err, res) => {
            // console.log(err);
         }
     )
 }
 
-function loginUser(userData, database) {
-    database.query(
-        "SELECT (?) from users", [userData.email],
+async function loginUser(userData, database) {
+    var loginUser = ""
+    //console.log(userData);
+    await database.query(
+        "SELECT * from users WHERE email=?", [userData.email],
         (err, res) => {
-            //console.log(err);
-            console.log(res);
+            console.log(err);
+
+            // console.log(res);
+            // console.log("Test");
+            loginUser = res;
         }
     )
+    return loginUser
 }

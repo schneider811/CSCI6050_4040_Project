@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from "react";
 import Axios from 'axios'
 import './Panel.css'
+import renderSite from '../RenderElements/render';
 
 var emailReg;
 var firstnameReg;

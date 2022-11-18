@@ -1,25 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import NavigationBar from './Components/NavigationBar';
-import Home from './Pages/Home/Home';
+import renderSite from './RenderElements/render'
 
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-const rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
-rootHeader.render(
-  <React.StrictMode>
-    <NavigationBar/>
-  </React.StrictMode>
-)
-root.render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>
-  
-);
+let root = renderSite(0);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
