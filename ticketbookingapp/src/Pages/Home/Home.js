@@ -17,7 +17,7 @@ class Home extends React.Component {
             <h2>Now Playing</h2>
             <ul class="Carousel-NowPlaying" role="region">
                 <li class="MoviePanel">
-                    <MoviePanel image="jurassic.jpeg" name="Jurassic Park"/>
+                    <MoviePanel name="Jurassic Park" image="jurassic.jpg"/>
                 </li>
                 <li class="MoviePanel">
                     <MoviePanel name="Jurassic Park II" image="jurassicpark.png"/>

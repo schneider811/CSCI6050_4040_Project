@@ -42,8 +42,7 @@ function Panel() {
             $(".left").css("background", "#b1a37a");
         });
 
-
-
+        
 
         
         
