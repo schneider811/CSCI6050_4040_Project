@@ -1,6 +1,6 @@
 import React from "react";
 import "./Checkout.css"
-import navigateTo from "../RenderPage";
+import navigateTo from "../../RenderElements/RenderPage";
 import SelectSeat from "./SelectSeat";
 
 class SelectShowtime extends React.Component {

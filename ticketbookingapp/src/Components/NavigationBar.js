@@ -1,6 +1,6 @@
 import React from "react";
 import "../style.css";
-import navigateTo from "../Pages/RenderPage";
+import navigateTo from "../RenderElements/RenderPage";
 import SignUp from "../Pages/Signup/signup";
 import Home from "../Pages/Home/Home";
 import AdminView from "../Pages/Admin/admin";
@@ -11,32 +11,78 @@ import ProfileView from "../Pages/Profile/profile";
 
 class NavigationBar extends React.Component {
     render() {
-        return <div class="Header-NavBar">
-            <header role="banner" class="Header-wrap">
-                <h1 class = "pulsate"> Retro Cinema</h1>
-                <ul class="NavBar" role="navigation">
+        if(this.props.status == 2) {
+            return <div class="Header-NavBar">
+                <header role="banner" class="Header-wrap">
+                    <h1 class = "pulsate"> Retro Cinema</h1>
+                    <ul class="NavBar" role="navigation">
 
-                    { <li class="NavBarButton">
-                        <button type="button" onClick={() => {navigateTo(AdminView)}}>AdminView</button>
-                    </li> }
-                    <li class="NavBarButton">
-                        <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
-                    </li>
-                    <li class="NavBarButton">
-                        <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
-                    </li>
-                    <li class="NavBarButton">
-                        <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
-                    </li>
-                    <li class="NavBarButton">
-                       <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
-                    </li>
-                    <li class="NavBarButton">
-                       <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
-                    </li>
-                </ul>
-            </header>
-        </div>
+                        { <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(AdminView)}}>AdminView</button>
+                        </li> }
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
+                        </li>
+                    </ul>
+                </header>
+            </div>
+        }
+        else if(this.props.status == 1) {
+            return <div class="Header-NavBar">
+                <header role="banner" class="Header-wrap">
+                    <h1 class = "pulsate"> Retro Cinema</h1>
+                    <ul class="NavBar" role="navigation">
+
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
+                        </li>
+                    </ul>
+                </header>
+            </div>
+        }
+        else {
+            return <div class="Header-NavBar">
+                <header role="banner" class="Header-wrap">
+                    <h1 class = "pulsate"> Retro Cinema</h1>
+                    <ul class="NavBar" role="navigation">
+
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Home)}}>Home</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
+                        </li>
+                        <li class="NavBarButton">
+                            <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
+                        </li>
+                    </ul>
+                </header>
+            </div>
+        }
     }
     
 }

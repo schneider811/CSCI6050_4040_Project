@@ -2,24 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import NavigationBar from '../Components/NavigationBar';
 import Home from '../Pages/Home/Home';
+import navigateTo from './RenderPage';
 
 
 
 function renderSite(accountStatus)
 {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    var root = ReactDOM.createRoot(document.getElementById('root'));
     const rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
     rootHeader.render(
     <React.StrictMode>
-        <NavigationBar/>
+        <NavigationBar status={accountStatus}/>
     </React.StrictMode>
     )
-    root.render(
-    <React.StrictMode>
-        <Home/>
-    </React.StrictMode>
-    
-    );
+    navigateTo(Home)
     return root;
 }
 

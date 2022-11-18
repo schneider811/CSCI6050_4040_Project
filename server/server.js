@@ -8,6 +8,8 @@ const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const port = 3001;
 var user_id = 0;
+var movie_id = 0;
+var promo_id = 0;
 const oneDay = 1000 * 60 * 60 * 24;
 
 var session;
@@ -40,8 +42,8 @@ db.connect(function(err) {
 // Database Access
 app.post('/register', (req, res) =>  {
     user_id += 1;
-    res.send(req.body);
     registerUser(req.body,db);
+    res.send(req.body);
 
 });
 
@@ -52,9 +54,21 @@ app.post('/login', (req, res) =>  {
 
 app.post('/logout',(req,res) => {
     req.session.destroy();
-    res.redirect('/');
 });
 
+app.post('/addMovie', (req, res) => {
+    movie_id += 1;
+    addMovie(req.body, db);
+    console.log("Movie Added!");
+    res.send("Movie Added!");
+});
+
+app.post('/addPromo', (req, res) => {
+    promo_id += 1;
+    addPromo(req.body, db);
+    console.log("Promo Added!");
+    res.send("Promo Added!");
+});
 
 app.post('/email', async (req, res) => {
     if(err) throw err;
@@ -124,4 +138,24 @@ async function loginUser(userData, database) {
         }
     )
     return loginUser
+}
+
+async function addMovie(movieData, database) {
+    await database.query(
+        "INSERT INTO movie (movie_id, title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [movie_id, movieData.title, movieData.duration, movieData.category, "No Cast", "No director", "No producer", movieData.synopsis, "No reviews", "No pic", movieData.trailer, "3/5"], 
+        (err, res) => {
+            console.log(err);
+        }
+    )
+}
+
+async function addPromo(promoData, database) {
+    await database.query(
+        "INSERT INTO promotion (promo_id, promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?, ?)",
+        [promo_id, promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
+        (err, res) => {
+            console.log(err);
+        }
+    )
 }

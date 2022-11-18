@@ -4,9 +4,18 @@ import Axios from 'axios'
 import './Panel.css'
 import './AdminPanel.css'
 
+var movieTitle;
+var movieDuration;
+var movieCategory;
+var movieSynopsis;
+var movieTrailer;
 
+var promoCode;
+var promoStart;
+var promoEnd;
+var percentage;
 
-function Panel() {
+function AdminPanel() {
 
     $(document).ready(function(){
         $(".bottom-right").hide();
@@ -66,36 +75,56 @@ function Panel() {
                 <label for="movie-actions"> Control Action:</label>
                 <select>
                     <option value = "add">Add</option>
-                    <option value = "edit">Edit</option>
-                    <option value = "del">Delete</option>
                 </select>
 
                         
                 <form class = "admin">
 
-                    <label for="add"> Add New Movie Name:</label>
-                    <input type="text" id="add-name" name="add-name"/>
+                    <label for="add">Movie Title:</label>
+                    <input type="text" id="add-title" name="add-title"
+                    onChange = {(e) => {
+                        movieTitle = e.target.value;
+                    }}/>
+                    <br></br>
+                    
+                    <label for="add"> Movie Duration:</label>
+                    <input type="time" id="add-duration" name="add-duration" step="2"
+                    onChange = {(e) => {
+                        movieDuration = e.target.value;
+                    }}/>
                     <br></br>
 
-                    <label for="info"> Add New Movie Info:</label>
-                    <input type="text" id="add-info" name="add-info"/>
+                    <label for="add"> Movie Category:</label>
+                    <input type="text" id="add-category" name="add-category"
+                    onChange = {(e) => {
+                        movieCategory = e.target.value;
+                    }}/>
                     <br></br>
 
-                    <label for="link"> Add New Movie Trailer:</label>
-                    <input type="url" id="add-url" name="add-url"/>
+                    <label for="info"> Movie Info:</label>
+                    <input type="text" id="add-info" name="add-info"
+                    onChange = {(e) => {
+                        movieSynopsis = e.target.value;
+                    }}/>
                     <br></br>
 
-                    <label for="del">Delete Movie:</label>
-                    <input type="text" id="del-movie" name="del-movie"/>
+                    <label for="link"> Movie Trailer:</label>
+                    <input type="url" id="add-url" name="add-url"
+                    onChange = {(e) => {
+                        movieTrailer = e.target.value;
+                    }}/>
                     <br></br>
-
-                    <button id = "movie-button"> Execute</button>
+                    
+                    <button id = "movie-button" onClick={addMovie}> Add Movie</button>
                 </form>
                 
             </div>
 
             <div class = "bottom-middle">
+                <form class = "schedule">
 
+                    <button id = "movie-button"> Schedule Movie</button>
+                </form>
             </div>
 
 
@@ -108,19 +137,31 @@ function Panel() {
                 
                    
                 <form class = "admin">
-                    <label for="prom"> Promotion Name:</label><br/>
-                    <input type="text" id="prom-name" name="prom-name"/><br/>
+                    <label for="prom"> Promotion Code:</label><br/>
+                    <input type="text" id="prom-name" name="prom-name"
+                    onChange = {(e) => {
+                        promoCode = e.target.value;
+                    }}/><br/>
 
                     <label for="discount">Discount Rate:</label><br/>
-                    <input type="number" id="discount" name="discount"/><br/>
+                    <input type="number" id="discount" name="discount"
+                    onChange = {(e) => {
+                        percentage = e.target.value;
+                    }}/><br/>
 
                     <label for="prom-start">Promotion Start Date:</label> <br/>
-                    <input type="date" id="prom-start" name="prom-start"/><br/>
+                    <input type="date" id="prom-start" name="prom-start"
+                    onChange = {(e) => {
+                        promoStart = e.target.value;
+                    }}/><br/>
 
                     <label for="prom-end">Promotion End Date:</label> <br/>
-                    <input type="date" id="prom-end" name="prom-end"/><br/>
+                    <input type="date" id="prom-end" name="prom-end"
+                    onChange = {(e) => {
+                        promoEnd = e.target.value;
+                    }}/><br/>
 
-                    <button id = "prom-button"> Execute</button>
+                    <button id = "prom-button" onClick={addPromo}> Execute</button>
                 </form>
 
             
@@ -135,7 +176,30 @@ function Panel() {
     );
 }
 
+async function addMovie() {
+    const newMovie = {
+        title: movieTitle,
+        duration: movieDuration,
+        category: movieCategory,
+        synopsis: movieSynopsis,
+        trailer: movieTrailer
+    }
+    
+    const newMovieResponse = await Axios.post("http://localhost:3001/addMovie", newMovie);
+    
+}
+
+async function addPromo() {
+    const newPromo = {
+        promoCode: promoCode,
+        startDate: promoStart,
+        endDate: promoEnd,
+        percentageOff: percentage,
+    }
+    
+    const newPromoResponse = await Axios.post("http://localhost:3001/addPromo", newPromo);
+    
+}
 
 
-
-export default Panel
+export default AdminPanel

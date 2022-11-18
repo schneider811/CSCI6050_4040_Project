@@ -20,7 +20,6 @@ CREATE TABLE movie(
   rating varchar(4) NOT NULL,
   PRIMARY KEY (movie_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO movie VALUES (1,'Lord of the Rings','3:12:30','Fantasy','Sean AStin, Vigo Mortenson, Elijah Wood, Orlando Bloom','Peter Jackson','Harvey Weinstein','A Hobbit goes to destroy the ring of power','five out of five', 'this is a picture link', 'this is a trailer link', 'PG13');
 
 CREATE TABLE showroom(
   room_id int NOT NULL AUTO_INCREMENT,

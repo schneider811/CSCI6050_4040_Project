@@ -169,7 +169,7 @@ async function loginUser() {
     }
     
     const loginResponse = await Axios.post("http://localhost:3001/login", loggingUser);
-
+    renderSite(2);
 }
 
 
