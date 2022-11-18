@@ -1,24 +1,53 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+}
+
 .container {
     width: 450px;
     margin: 100px auto;
+   
+
+    box-shadow:
+    0 0 7px #e0b637,
+    0 0 10px #e0b637,
+    0 0 5px #e0b637,
+
+    0 0 22px #ff906f,
+    0 0 30px #ff906f,
+    0 0 50px #ff906f,
+    0 0 25px #ff906f,
+    0 0 25px #ff906f;
 }
 
-.left, .right {
+.left {
     width: 50%;
     height: 60px;
     float: left;
     text-align: center;
     line-height: 60px;
-    color: white;
+    color: black;
+    font-family: 'Alatsi';
 }
+
+.right {
+    width: 50%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    font-family: 'Alatsi';
+}
+
 
 .left {
-    background-color: #7C0C0C;
+    background-color: #ac944e;
 
 }
 
-.bottom-left, .bottom-right {
-    background: #D9D9D9;
+.bottom-left {
+    background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
     clear: both;
@@ -26,10 +55,15 @@
     height: 400px;
 }
 
-.container button {
-    background-color: #BA1313;
-    border: none;
-    padding: 15px;
-    float: right;
+
+.bottom-right {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: 400px;
 }
+
+
 

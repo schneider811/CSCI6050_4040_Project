@@ -42,11 +42,11 @@ h1 {
   
 
 body {
-  background-color: black;
+  background-image: url('images/movie_background.png');
+  overscroll-behavior: none;
 
-
-  
 }
+
 ul.NavBar {
     padding: 1em;
     background-color: #e3dcc9;
@@ -55,6 +55,7 @@ ul.NavBar {
     border-width: 1em;
     border-color: #ac944e;
     box-shadow: 0 0 10px #e0b637;
+
 
     
 }
@@ -78,4 +79,9 @@ ul.NavBar {
     font-weight:bolder;
     font-family: 'Alatsi';
 
+}
+
+.pick {
+  background-color: rgba(0, 0, 0, 0.526);
+  box-shadow: inset 0 0 50px #e0b637;
 }

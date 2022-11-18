@@ -12,6 +12,13 @@ h2 {
     text-decoration: underline;
 
 }
+
+.pick-trailer {
+    border-style: none;
+    margin: 0 auto;
+    display:block;
+
+}
 ul.Carousel-NowPlaying > li {
     display: inline-block;
     
