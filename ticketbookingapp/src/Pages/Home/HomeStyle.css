@@ -1,11 +1,24 @@
-ul.Carousel-NowPlaying {
-    padding-right: 1em;
-    background-color: #4B4242;
-    
+@font-face {
+    font-family: 'Limelight';
+    src: url('../../fonts/Limelight/Limelight-Regular.ttf') format('truetype');
+  
+}
+
+h2 {
+    text-align: left;
+    margin-top: 1.6em;
+    font-family: 'Limelight';
+    color: #D9D9D9;
+    text-decoration: underline;
 
 }
 
+.pick-trailer {
+    border-style: none;
+    margin: 0 auto;
+    display:block;
 
+}
 ul.Carousel-NowPlaying > li {
     display: inline-block;
     

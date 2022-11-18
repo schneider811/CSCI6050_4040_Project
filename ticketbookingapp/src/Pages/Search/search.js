@@ -1,13 +1,15 @@
 import React from "react";
 import MoviePanel from "../../Components/MoviePanel";
-//import "./search.css";
+import "./search.css";
 
 
 class Search extends React.Component {
     render() {
         return <div id="Search">
-            <input type="text" placeholder="Search"></input>
-            <button> Search</button>
+            <form>
+                <input type="search" placeholder="Search" id = "search-bar"></input>
+            </form>
+       
             <h2>Now Playing</h2>
             <ul class="Carousel-NowPlaying" role="region">
                 <li class="MoviePanel">

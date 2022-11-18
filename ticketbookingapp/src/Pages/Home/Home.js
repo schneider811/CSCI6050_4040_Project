@@ -6,10 +6,18 @@ import "./HomeStyle.css";
 class Home extends React.Component {
     render() {
         return <div id="Home">
+
+
+            <h2> Season's Pick</h2>
+            <div class = "pick">
+                <iframe class = "pick-trailer" width="650" height="350" src="https://www.youtube.com/embed/_Z3QKkl1WyM" title="YouTube video player" frameborder="9" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+            </div>
+           
             <h2>Now Playing</h2>
             <ul class="Carousel-NowPlaying" role="region">
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic Park" image="jurassicpark.png"/>
+                    <MoviePanel image="jurassic.jpeg" name="Jurassic Park"/>
                 </li>
                 <li class="MoviePanel">
                     <MoviePanel name="Jurassic Park II" image="jurassicpark.png"/>

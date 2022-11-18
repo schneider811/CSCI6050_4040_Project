@@ -17,20 +17,20 @@ function Panel() {
 
     $(document).ready(function(){
         $(".bottom-right").hide();
-        $(".right").css("background", "#BA1313");
+        $(".right").css("background", "#b1a37a");
     
         $(".right").click(function(){
             $(".bottom-left").hide();
             $(".bottom-right").show();
-            $(".left").css("background", "#BA1313");
-            $(".right").css("background", "#7C0C0C");
+            $(".left").css("background", "#b1a37a");
+            $(".right").css("background", "#ac944e");
         });
     
         $(".left").click(function(){
             $(".bottom-left").show();
             $(".bottom-right").hide();
-            $(".left").css("background", "#7C0C0C");
-            $(".right").css("background", "#BA1313");
+            $(".left").css("background", "#ac944e");
+            $(".right").css("background", "#b1a37a");
         });
 
         

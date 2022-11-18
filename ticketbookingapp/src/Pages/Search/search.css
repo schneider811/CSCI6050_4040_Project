@@ -1,11 +1,5 @@
-ul.Carousel-NowPlaying {
-    padding-right: 1em;
-    background-color: #4B4242;
-    
 
-}
-
-
+  
 ul.Carousel-NowPlaying > li {
     display: inline-block;
     
@@ -15,13 +9,21 @@ ul.Carousel-ComingSoon > li {
     
 }
 
-input {
-    width:80em;
+
+#search-bar {
+    width:1300px;
+    height:4em;
     margin:60px;
     padding: 10px;
-
+    background-color: rgba(0, 0, 0, 0.426);
+    color: white;
+    border-style: solid ;
+    border-color: #e0b637;
+    font-family: 'Alatsi';
+    font-size: 20px;
 
 }
+
 
 input::placeholder {
     font-weight: bold;

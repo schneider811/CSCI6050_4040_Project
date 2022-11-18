@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+}
+.admin {
+    margin: 4px;
+}
+
+.admin input {
+    margin: 10px;
+}
+
+#movie-button {
+    bottom: -46px;
+    background-color: black;
+    font-family: 'Alatsi';
+}
+
+#prom-button {
+    top: -30px;
+    background-color: black;
+    font-family: 'Alatsi';
+}
+#left-admin {
+    width: 33.33%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    font-family: 'Alatsi';
+}
+
+#right-admin {
+    width: 33.33%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    font-family: 'Alatsi';
+}
+.middle {
+    width: 33.33%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    font-family: 'Alatsi';
+}
+
+.bottom-middle {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: 400px;
+}

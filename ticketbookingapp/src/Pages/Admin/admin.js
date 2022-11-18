@@ -1,11 +1,26 @@
 import React from "react";
 import "./admin.css";
+import AdminPanel from "../../Components/AdminPanel";
+
 
 
 class AdminView extends React.Component {
     render() {
+        return (
+            <div>
+                <h2> Admin Control Center</h2>
+                <AdminPanel></AdminPanel>
+            </div>
+
+         );
+    }
+}
+
+
+
+        /*
         return <div id="AdminView">
-            <h1> Admin Control Center</h1>
+            <h2> Admin Control Center</h2>
             <div class="input-box" id="edit-movies">
                 <div class="box-header">
                     <h2> Edit Movies</h2>
@@ -56,7 +71,7 @@ class AdminView extends React.Component {
             </div>
         </div>
     }
-}
+} */
 
 export default AdminView
 

@@ -1,8 +1,17 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+  }
+  
 .poster {
-    background-color:#D9D9D9;
+    background-color:#e3dcc9;
     color: black;
     height: fit-content;
     width: 20em;
+    border-style: double;
+    border-style:groove;
+    border-color: #ac944e;
+    border-width: 1em;
 }
 
 .title{
@@ -10,6 +19,8 @@
     padding:10px;
     position: relative;
     top: 80px;
+    font-family: 'Alatsi';
+
 }
 
 button {
