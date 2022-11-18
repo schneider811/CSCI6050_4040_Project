@@ -123,7 +123,7 @@ function AdminPanel() {
             <div class = "bottom-middle">
                 <form class = "schedule">
 
-                    <button id = "movie-button"> Schedule Movie</button>
+                    <button id = "movie-button"> Manage User</button>
                 </form>
             </div>
 
