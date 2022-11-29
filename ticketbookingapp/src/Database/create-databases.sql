@@ -5,6 +5,7 @@ USE `CSCI_6050_4050_TeamB9`;
 SET NAMES utf8 ;
 SET character_set_client = utf8mb4 ;
 
+
 CREATE TABLE movie(
   movie_id int NOT NULL AUTO_INCREMENT,
   title varchar(50) NOT NULL,
@@ -139,8 +140,10 @@ CREATE TABLE booking(
   foreign key (ticket_id) references ticket(ticket_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
-
-
-
+CREATE TABLE user_lg(
+  user_lg_id int NOT NULL AUTO_INCREMENT,
+  user_id int NOT NULL,
+  PRIMARY KEY (user_lg_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

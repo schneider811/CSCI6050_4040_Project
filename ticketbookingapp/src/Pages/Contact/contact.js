@@ -1,5 +1,4 @@
 import React from "react";
-import MoviePanel from "../../Components/MoviePanel";
 import "./contact.css";
 
 

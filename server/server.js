@@ -1,8 +1,8 @@
 //const insertData = require('insertData');
 const cors = require('cors');
 const express = require("express");
+var router = express.Router();
 const app = express();
-var mysql = require('mysql');
 const nodemailer = require('nodemon');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
@@ -11,6 +11,7 @@ var user_id = 0;
 var movie_id = 0;
 var promo_id = 0;
 const oneDay = 1000 * 60 * 60 * 24;
+var db = require('./database');
 
 var session;
 
@@ -20,24 +21,14 @@ app.use(sessions({
     secret: "thisisthekeyforthecsci4050project",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
-    resave: false
+    resave: true
 }))
 app.use(cookieParser());
 
-const db = mysql.createConnection({
-
-    host: "localhost",
-    user: "root",
-    password: "4050",
-    database: "CSCI_6050_4050_TeamB9"
-});
 
 app.set("port", process.env.PORT || port);
 
-db.connect(function(err) {
-    if(err) throw err;
-    console.log("Connected!");
-});
+
 
 // Database Access
 app.post('/register', (req, res) =>  {
@@ -49,7 +40,7 @@ app.post('/register', (req, res) =>  {
 
 app.post('/login', (req, res) =>  {
     
-    res.send(loginUser(req.body,db));
+    console.log(req.session);
 });
 
 app.post('/logout',(req,res) => {

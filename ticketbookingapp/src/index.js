@@ -4,11 +4,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import NavigationBar from './Components/NavigationBar';
 import Home from './Pages/Home/Home';
-import renderSite from './RenderElements/render';
 
-renderSite(2)
-
-
+let root = ReactDOM.createRoot(document.getElementById('root'));
+let rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
+rootHeader.render(
+    <React.StrictMode>
+        <NavigationBar status={2}/>
+    </React.StrictMode>
+)
+root.render(
+    <React.StrictMode>
+        <Home></Home>
+    </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

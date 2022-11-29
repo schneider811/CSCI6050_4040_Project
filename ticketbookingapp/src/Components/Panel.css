@@ -4,7 +4,8 @@
 }
 
 .container {
-    width: 450px;
+    width: fit-content;
+    height: fit-content;
     margin: 100px auto;
    
 
@@ -52,7 +53,7 @@
     padding: 40px;
     clear: both;
     width: 100%;
-    height: 400px;
+    height: fit-content;
 }
 
 
@@ -62,7 +63,7 @@
     padding: 40px;
     clear: both;
     width: 100%;
-    height: 400px;
+    height: fit-content;
 }
 
 
