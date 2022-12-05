@@ -9,13 +9,8 @@ import navigateTo from './RenderPage';
 function renderSite(accountStatus)
 {
 
-    var root = ReactDOM.createRoot(document.getElementById('root'));
-    const rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
-    rootHeader.render(
-    <React.StrictMode>
-        <NavigationBar status={accountStatus}/>
-    </React.StrictMode>
-    )
+    var root = ReactDOM.hydrateRoot(document.getElementById('root'));
+    
     navigateTo(Home)
     return root;
 }

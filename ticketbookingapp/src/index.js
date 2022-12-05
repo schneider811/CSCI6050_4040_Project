@@ -6,14 +6,10 @@ import NavigationBar from './Components/NavigationBar';
 import Home from './Pages/Home/Home';
 
 let root = ReactDOM.createRoot(document.getElementById('root'));
-let rootHeader = ReactDOM.createRoot(document.getElementById("rootHeader"));
-rootHeader.render(
-    <React.StrictMode>
-        <NavigationBar status={2}/>
-    </React.StrictMode>
-)
+
 root.render(
     <React.StrictMode>
+        <NavigationBar status={2}></NavigationBar>
         <Home></Home>
     </React.StrictMode>
 );

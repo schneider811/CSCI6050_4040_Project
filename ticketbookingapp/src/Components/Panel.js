@@ -9,6 +9,7 @@ var firstnameReg;
 var lastnameReg;
 var passwordReg;
 var birthdateReg;
+var phoneReg;
 
 var emailLog;
 var passwordLog;
@@ -18,7 +19,8 @@ class Panel extends React.Component {
         super(props);
         
     }
-    // $(document).ready(function(){
+    
+    //  $(document).ready(function(){
     //     $(".bottom-right").hide();
     //     $(".right").css("background", "#b1a37a");
     
@@ -35,10 +37,6 @@ class Panel extends React.Component {
     //         $(".left").css("background", "#ac944e");
     //         $(".right").css("background", "#b1a37a");
     //     });
-
-        
-        
-    
     // });
 
    
@@ -53,7 +51,7 @@ class Panel extends React.Component {
                 <div class = "left"> Sign Up</div>
                 <div class = "right"> Login</div>
 
-                <div class = "bottom-left">
+                <div class = "register">
                     
                     <form id = "form">
                         <label for="email"> Email: *</label><br/>
@@ -77,6 +75,13 @@ class Panel extends React.Component {
                         <input required type="text" id="lname" name="lname"
                             onChange = {(e) => {
                                 lastnameReg = e.target.value;
+                            }}
+                        /><br/>
+
+                        <label for="phone">Phone: *</label><br/>
+                        <input required type="number" id="phoneNum" name="phoneNum"
+                            onChange = {(e) => {
+                                phoneReg = e.target.value;
                             }}
                         /><br/>
 
@@ -110,7 +115,7 @@ class Panel extends React.Component {
 
                 </div>
 
-                <div class = "bottom-right">
+                <div class = "login">
                     
                     <form >
                         <label for="email"> Email: *</label><br/>
@@ -154,13 +159,14 @@ async function registerUser() {
         first_name: firstnameReg,
         last_name: lastnameReg,
         password: passwordReg,
-        birthdate: birthdateReg
+        birthdate: birthdateReg,
+        phone: phoneReg
     }
 
     
 
     const response = await Axios.post("http://localhost:3001/register", newUser);
-    const confirm = await Axios.post("http://localhost:3001/email", newUser);
+    //const confirm = await Axios.post("http://localhost:3001/email", newUser);
     //const loginResponse = await Axios.post("http://localhost:3001/login", prevUser);
     
 }

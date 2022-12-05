@@ -7,9 +7,6 @@ const nodemailer = require('nodemon');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const port = 3001;
-var user_id = 0;
-var movie_id = 0;
-var promo_id = 0;
 const oneDay = 1000 * 60 * 60 * 24;
 var db = require('./database');
 
@@ -32,7 +29,6 @@ app.set("port", process.env.PORT || port);
 
 // Database Access
 app.post('/register', (req, res) =>  {
-    user_id += 1;
     registerUser(req.body,db);
     res.send(req.body);
 
@@ -48,14 +44,14 @@ app.post('/logout',(req,res) => {
 });
 
 app.post('/addMovie', (req, res) => {
-    movie_id += 1;
+
     addMovie(req.body, db);
     console.log("Movie Added!");
     res.send("Movie Added!");
 });
 
 app.post('/addPromo', (req, res) => {
-    promo_id += 1;
+
     addPromo(req.body, db);
     console.log("Promo Added!");
     res.send("Promo Added!");
@@ -107,16 +103,18 @@ app.listen(port, () => {
 
 async function registerUser(userData, database) {
     await database.query(
-        "INSERT INTO users (user_id, first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [user_id, userData.first_name, userData.last_name, 0, userData.email, 0, 1, 3, userData.password, userData.birthdate], 
+        "INSERT INTO users (first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [userData.first_name, userData.last_name, userData.phone, userData.email, 0, 1, 3, userData.password, userData.birthdate], 
         (err, res) => {
-           // console.log(err);
+            console.log(err);
+            console.log(res);
         }
+       
     )
 }
 
 async function loginUser(userData, database) {
-    var loginUser = ""
+    var loginUser = "";
     //console.log(userData);
     await database.query(
         "SELECT * from users WHERE email=?", [userData.email],
@@ -133,8 +131,8 @@ async function loginUser(userData, database) {
 
 async function addMovie(movieData, database) {
     await database.query(
-        "INSERT INTO movie (movie_id, title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [movie_id, movieData.title, movieData.duration, movieData.category, "No Cast", "No director", "No producer", movieData.synopsis, "No reviews", "No pic", movieData.trailer, "3/5"], 
+        "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
         (err, res) => {
             console.log(err);
         }
@@ -143,8 +141,8 @@ async function addMovie(movieData, database) {
 
 async function addPromo(promoData, database) {
     await database.query(
-        "INSERT INTO promotion (promo_id, promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?, ?)",
-        [promo_id, promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
+        "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
+        [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
         (err, res) => {
             console.log(err);
         }

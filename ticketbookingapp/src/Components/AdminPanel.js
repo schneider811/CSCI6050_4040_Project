@@ -7,8 +7,12 @@ import './AdminPanel.css'
 var movieTitle;
 var movieDuration;
 var movieCategory;
+var movieDirector;
+var movieProducer;
 var movieSynopsis;
 var movieTrailer;
+var moviePosterName;
+var movieCast;
 
 var promoCode;
 var promoStart;
@@ -18,23 +22,23 @@ var percentage;
 function AdminPanel() {
 
     $(document).ready(function(){
-        $(".bottom-right").hide();
+        $(".promo").hide();
         $(".bottom-middle").hide();
         $(".middle").css("background", "#b1a37a");
         $(".right").css("background", "#b1a37a");
     
         $(".right").click(function(){
-            $(".bottom-left").hide();
+            $(".newMovie").hide();
             $(".bottom-middle").hide();
-            $(".bottom-right").show();
+            $(".promo").show();
             $(".left").css("background", "#b1a37a");
             $(".middle").css("background", "#b1a37a");
             $(".right").css("background", "#ac944e");
         });
     
         $(".left").click(function(){
-            $(".bottom-left").show();
-            $(".bottom-right").hide();
+            $(".newMovie").show();
+            $(".promo").hide();
             $(".bottom-middle").hide();
             $(".left").css("background", "#ac944e");
             $(".right").css("background", "#b1a37a");
@@ -44,8 +48,8 @@ function AdminPanel() {
 
         $(".middle").click(function(){
             $(".bottom-middle").show();
-            $(".bottom-left").hide();
-            $(".bottom-right").hide();
+            $(".newMovie").hide();
+            $(".promo").hide();
             $(".middle").css("background", "#ac944e");
             $(".right").css("background", "#b1a37a");
             $(".left").css("background", "#b1a37a");
@@ -65,11 +69,11 @@ function AdminPanel() {
             <div id = "error"> </div>
 
             <div class = "left" id = "left-admin"> Movie Controls</div>
-            <div class = "middle" id = "middle-admin"> User Controls</div>
+            <div class = "middle" id = "middle-admin"> Schedule Movie</div>
             <div class = "right" id = "left-admin"> Promotion Controls</div>
 
 
-            <div class = "bottom-left">
+            <div class = "newMovie">
                 
                 <label for="movie-actions"> Control Action:</label>
                 <select>
@@ -93,6 +97,27 @@ function AdminPanel() {
                     }}/>
                     <br></br>
 
+                    <label for="add"> Movie Director:</label>
+                    <input type="text" id="add-director" name="add-director"
+                    onChange = {(e) => {
+                        movieDirector = e.target.value;
+                    }}/>
+                    <br></br>
+
+                    <label for="add"> Movie Producer:</label>
+                    <input type="text" id="add-producer" name="add-producer"
+                    onChange = {(e) => {
+                        movieProducer = e.target.value;
+                    }}/>
+                    <br></br>
+
+                    <label for="add"> Movie Cast:</label>
+                    <input type="text" id="add-producer" name="add-producer"
+                    onChange = {(e) => {
+                        movieCast = e.target.value;
+                    }}/>
+                    <br></br>
+
                     <label for="add"> Movie Category:</label>
                     <input type="text" id="add-category" name="add-category"
                     onChange = {(e) => {
@@ -107,14 +132,22 @@ function AdminPanel() {
                     }}/>
                     <br></br>
 
+                    <label for="link"> Movie Poster Name:</label>
+                    <input type="text" id="add-url" name="add-url"
+                    onChange = {(e) => {
+                        moviePosterName = e.target.value;
+                    }}/>
+                    <br></br>
+
                     <label for="link"> Movie Trailer:</label>
                     <input type="url" id="add-url" name="add-url"
                     onChange = {(e) => {
                         movieTrailer = e.target.value;
                     }}/>
+                    <button id = "movie-button" onClick={addMovie}> Add Movie</button>
                     <br></br>
                     
-                    <button id = "movie-button" onClick={addMovie}> Add Movie</button>
+                    
                 </form>
                 
             </div>
@@ -132,7 +165,7 @@ function AdminPanel() {
 
 
 
-            <div class = "bottom-right">
+            <div class = "promo">
                 
                    
                 <form class = "admin">
@@ -180,8 +213,12 @@ async function addMovie() {
         title: movieTitle,
         duration: movieDuration,
         category: movieCategory,
+        director: movieDirector,
+        producer: movieProducer,
+        posterName: moviePosterName,
         synopsis: movieSynopsis,
-        trailer: movieTrailer
+        trailer: movieTrailer,
+        cast: movieCast
     }
     
     const newMovieResponse = await Axios.post("http://localhost:3001/addMovie", newMovie);

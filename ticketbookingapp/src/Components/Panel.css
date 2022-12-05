@@ -47,7 +47,7 @@
 
 }
 
-.bottom-left {
+.newMovie {
     background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
@@ -57,7 +57,7 @@
 }
 
 
-.bottom-right {
+.promo {
     background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
@@ -66,5 +66,20 @@
     height: fit-content;
 }
 
+.login {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: fit-content;
+}
 
-
+.register {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: fit-content;
+}
