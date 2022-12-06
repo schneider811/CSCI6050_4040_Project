@@ -39,12 +39,17 @@
     line-height: 60px;
     color: black;
     font-family: 'Alatsi';
+    
 }
 
 
 .left {
     background-color: #ac944e;
 
+}
+
+.right {
+    background-color: #b1a37a;
 }
 
 .newMovie {
@@ -82,4 +87,13 @@
     clear: both;
     width: 100%;
     height: fit-content;
+}
+
+button {
+    background-color: transparent;
+    color: black;
+    margin: 0.5em;
+    border: none;
+    font-weight:bolder;
+    font-family: 'Alatsi';
 }

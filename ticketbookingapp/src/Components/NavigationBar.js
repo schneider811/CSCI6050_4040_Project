@@ -1,7 +1,7 @@
 import React from "react";
 import "../style.css";
 import navigateTo from "../RenderElements/RenderPage";
-import SignUp from "../Pages/Signup/signup";
+import SignIn from "../Pages/SignIn/signin";
 import Home from "../Pages/Home/Home";
 import AdminView from "../Pages/Admin/admin";
 import Search from "../Pages/Search/search";
@@ -33,7 +33,7 @@ class NavigationBar extends React.Component {
                             <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
                         </li>
                         <li class="NavBarButton">
-                            <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
+                            <button type="button" onClick={() => {navigateTo(SignIn)}}>Login/Register</button>
                         </li>
                     </ul>
                 </header>
@@ -77,7 +77,7 @@ class NavigationBar extends React.Component {
                             <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
                         </li>
                         <li class="NavBarButton">
-                            <button type="button" onClick={() => {navigateTo(SignUp)}}>Login/Register</button>
+                            <button type="button" onClick={() => {navigateTo(SignIn)}}>Login/Register</button>
                         </li>
                     </ul>
                 </header>

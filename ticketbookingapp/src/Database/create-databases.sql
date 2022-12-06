@@ -27,6 +27,7 @@ CREATE TABLE showroom(
   seats int NOT NULL,
   PRIMARY KEY (room_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO showroom VALUES (1, 25);
 
 CREATE TABLE theater(
   theater_id int NOT NULL AUTO_INCREMENT,

@@ -50,6 +50,20 @@
     font-family: 'Alatsi';
 }
 
+.left {
+    background-color: #ac944e;
+
+}
+
+.middle {
+    background-color: #b1a37a;
+}
+
+.right {
+    background-color: #b1a37a;
+}
+
+
 .bottom-middle {
     background: #e3dcc9;
     box-sizing: border-box;
