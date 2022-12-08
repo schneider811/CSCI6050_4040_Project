@@ -37,7 +37,6 @@ function Panel() {
     
     });
 
-    var testText = "";
     
 
     return(
@@ -58,7 +57,7 @@ function Panel() {
                         onChange = {(e) => {
                             emailReg = e.target.value;
                         }}
-                    />{testText}<br/>
+                    /><br/>
 
 
                     <label for="fname">First name: *</label><br/>
@@ -98,10 +97,9 @@ function Panel() {
 
                     <p>* indicates that the field is required when creating an account</p>
 
-                    <button onClick={registerUser} class="submitReg"> Submit </button>
-
                 </form>
                 
+                <button class="submitReg"> Submit </button>
 
             </div>
 

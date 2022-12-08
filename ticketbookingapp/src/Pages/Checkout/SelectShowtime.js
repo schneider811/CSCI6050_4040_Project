@@ -1,27 +1,78 @@
+import $ from 'jquery';
 import React from "react";
 import "./Checkout.css"
 import navigateTo from "../RenderPage";
 import SelectSeat from "./SelectSeat";
 
 class SelectShowtime extends React.Component {
+ 
     render() {
+
+
+        $(document).ready(function(){
+
+
+            $(".timing").click(function() {
+
+                if($(this).css("background-color")=="#e3dcc9") {
+                    $(this).css("background-color", "black");
+                }
+
+            });
+            
+
+
+
+
+
+
+        });
+
         return  (
-            <div class="SelectShowtime">
-                <div class="option-box"/>  
-                <h3>Show-Time :</h3> 
-                <br></br>
-                <select>
-                    <option value="movie slot">Select a Showtime</option>
-                    <option value="10am">10:00am</option>
-                    <option value="1.30pm">1:30pm</option>
-                    <option value="4pm">4:00pm</option>
-                    <option value="7pm">7:00pm</option>
-                    <option value="10pm">10:00pm</option>
-                </select> <br/>
-                <div/>
-                <button onClick={() => {navigateTo(SelectSeat)}}>Submit</button>
+
+            <div class = "select-showtime">
+                <h2> Pick a show time!</h2>
+
+                <input type = "date" id = "show-date"></input>
+
+                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}} >
+                    <h3>10 00 AM</h3>
+                    <p> Movie Title</p>
+                    <h3> Seats Taken: 0/50 </h3>
+                </div>
+
+
+                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
+                    <h3>1 30 PM</h3>
+                    <p> Movie Title</p>
+                    <h3> Seats Taken: 0/50 </h3>
+                </div>
+
+
+                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
+                    <h3>4 00 PM</h3>
+                    <p> Movie Title</p>
+                    <h3> Seats Taken: 0/50 </h3>
+                </div>
+
+
+                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
+                    <h3>7 00 PM</h3>
+                    <p> Movie Title</p>
+                    <h3> Seats Taken: 0/50 </h3>
+                </div>
+
+                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
+                    <h3>10 00 PM</h3>
+                    <p> Movie Title</p>
+                    <h3> Seats Taken: 0/50 </h3>
+                </div>
+
             </div>
-        );
+
+
+        ); 
+
     }
 }
 

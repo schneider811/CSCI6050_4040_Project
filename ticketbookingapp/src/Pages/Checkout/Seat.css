@@ -1,0 +1,38 @@
+
+.theater {
+    transform: translate(33%, 20%);
+
+}
+
+#screen {
+    width: 500px;
+    height: 25px;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.seatRow {
+    display: grid;
+    grid-template-columns: repeat(30,1fr);
+}
+
+.seatLayout-top {
+    margin-bottom: 30px;
+}
+
+
+
+.seat {
+    background-color: grey;
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    
+
+}
+
+.seat:hover {
+    background-color: white;
+}
+

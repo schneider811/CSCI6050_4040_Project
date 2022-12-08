@@ -1,24 +1,30 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+}
+
 .container {
     width: 50rem;
     margin: 5rem auto;
 }
 
 .pf-info, .pa-info, .set {
-    width: 10rem;
+    width: 33.33%;
     height: 60px;
     float: left;
     text-align: center;
     line-height: 60px;
-    color: white;
+    color: black;
+    font-family: 'Alatsi';
 }
 
 .pf-info {
-    background-color: #7C0C0C;
+    background-color: #ac944e;
 
 }
 
-.edit-profile-info, .profile-info, .payment-info, .settings {
-    background: #D9D9D9;
+.edit-profile-info, .profile-info, .payment-info, .settings, .edit-billing {
+    background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
     clear: both;
@@ -77,13 +83,62 @@
 .carousel_btn--selected {
     background: rgba(255, 255, 255, 0.742);
 }
-.container button {
-    background-color: #BA1313;
+#confirm-profile-btn {
+    background-color: black;
     border: none;
     padding: 15px;
     float: right;
+    font-family: 'Alatsi';
+    margin-top: 10px;
 }
 
+#confirm-bill-btn {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    float: right;
+    font-family: 'Alatsi';
+}
+
+#edit-profile-btn {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    float: right;
+    font-family: 'Alatsi';
+}
+
+#edit-bill-btn {
+    background-color: black;
+    border: none;
+    padding: 10px;
+    font-family: 'Alatsi';
+
+
+}
+#add-card-btn {
+    background-color: black;
+    border: none;
+    padding: 10px;
+    font-family: 'Alatsi';
+
+}
+
+#delete-btn {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    font-family: 'Alatsi';
+
+}
+
+form {
+    margin: 10px;
+}
+
+.billing-info {
+    margin-top: -50px;
+}
 .settings {
     font-weight: bold;
 }
