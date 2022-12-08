@@ -1,0 +1,36 @@
+#layout{
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:15%;
+}
+.input-box{
+    display:inline-block;
+    background-color: #D9D9D9;
+    padding: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.box-header{
+    background-color:var(--theatreRed);
+    color:#FFFFFF;
+    text-align:center;
+    
+}
+
+#signup{
+    float: left;
+    height: fit-content;
+    width:fit-content;
+  
+}
+
+#login{
+    float: left;
+    height: 350px;
+    width:300px;
+
+
+  
+}

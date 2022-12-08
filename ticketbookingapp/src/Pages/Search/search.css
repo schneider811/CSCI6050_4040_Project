@@ -1,0 +1,35 @@
+
+  
+ul.Carousel-NowPlaying > li {
+    display: inline-block;
+    
+}
+ul.Carousel-ComingSoon > li {
+    display: inline-block;
+    
+}
+
+
+#search-bar {
+    width:1300px;
+    height:4em;
+    margin:60px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.426);
+    color: white;
+    border-style: solid ;
+    border-color: #e0b637;
+    font-family: 'Alatsi';
+    font-size: 20px;
+
+}
+
+
+input::placeholder {
+    font-weight: bold;
+}
+
+h2 {
+    padding-left: 1em;
+    color: #D9D9D9;
+}

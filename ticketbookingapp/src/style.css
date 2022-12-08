@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Limelight';
+  src: url('fonts/Limelight/Limelight-Regular.ttf') format('truetype');
+
+}
+
+@font-face {
+  font-family: 'Alatsi';
+  src: url('fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Limelight';
+  letter-spacing: .2rem;
+  font-weight: bold;
+  color: red;
+  margin-bottom: -.2em;
+  font-size: 3em;
+
+
+  text-shadow:
+    0 0 7px #e0b637,
+    0 0 10px #e0b637,
+    0 0 21px #e0b637,
+
+    0 0 42px #ff906f,
+    0 0 60px #ff906f,
+    0 0 92px #ff906f,
+    0 0 102px #ff906f,
+    0 0 100px #ff906f;
+   
+}
+
+.pulsate {
+  animation: pulsate 1.5s infinite alternate;     
+
+}
+
+
+
+  
+
+body {
+  background-image: url('images/movie_background.png');
+  overscroll-behavior: none;
+
+}
+
+ul.NavBar {
+    padding: 1em;
+    background-color: #e3dcc9;
+    text-align: center;
+    border-style: double none double;
+    border-width: 1em;
+    border-color: #ac944e;
+    box-shadow: 0 0 10px #e0b637;
+
+
+    
+}
+  ul.NavBar > li {
+    display: inline-block;
+    margin-right: 1em;
+    background-color: transparent;
+
+}
+  ul.NavBar > li > button:hover {
+    color: red;
+    border-style: dotted;
+    border-color: black;
+
+}
+  ul.NavBar > li > button {
+    background-color: transparent;
+    color: black;
+    margin: 0.5em;
+    border: none;
+    font-weight:bolder;
+    font-family: 'Alatsi';
+
+}
+
+.pick {
+  background-color: rgba(0, 0, 0, 0.526);
+  box-shadow: inset 0 0 50px #e0b637;
+}

@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+  }
+  
+.poster {
+    background-color:#e3dcc9;
+    color: black;
+    height: fit-content;
+    width: 20em;
+    border-style: double;
+    border-style:groove;
+    border-color: #ac944e;
+    border-width: 1em;
+}
+
+.title{
+    font-size: 30px;
+    padding:10px;
+    position: relative;
+    margin-left: 10px;
+    margin-bottom: -10px;
+    font-family: 'Alatsi';
+
+}
+
+button {
+   margin: 20px;
+   margin-top: 50px;
+   position:relative;
+   background-color: var(--theatreRed);
+   color: white;
+   border-color: var(--theatreRed);
+}
+
+button:hover {
+    margin: 20px;
+    margin-top: 50px;
+    position:relative;
+    background-color: #658C3D;
+    color: white;
+    border-color: #658C3D;
+}
+
+img {
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+li.MoviePanel {
+    Padding: 1em;
+}
+
+.ratings {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: -30px;
+}
+
+.fa {
+    color: orange;
+}
