@@ -4,6 +4,9 @@ import navigateTo from "../../RenderElements/RenderPage";
 import SelectSeat from "./SelectSeat";
 
 class SelectShowtime extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return  (
             <div class="SelectShowtime">

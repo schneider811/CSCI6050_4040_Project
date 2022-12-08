@@ -8,7 +8,7 @@ function navigateTo( Component ) {
     root.render(
         
         <React.StrictMode>
-            <NavigationBar status={2}></NavigationBar>
+            <NavigationBar></NavigationBar>
             <Component/>
         </React.StrictMode>
     );

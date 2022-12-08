@@ -15,6 +15,9 @@ var movieCast;
 
 
 class AddMovie extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return (
             <div class = "newMovie">

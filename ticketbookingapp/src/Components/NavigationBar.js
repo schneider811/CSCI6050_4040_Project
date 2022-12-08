@@ -10,8 +10,12 @@ import ProfileView from "../Pages/Profile/profile";
 
 
 class NavigationBar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {userStatus: 2}
+    }
     render() {
-        if(this.props.status === 2) {
+        if(this.state.userStatus === 2) {
             return <div class="Header-NavBar">
                 <header role="banner" class="Header-wrap">
                     <h1 class = "pulsate"> Retro Cinema</h1>
@@ -39,7 +43,7 @@ class NavigationBar extends React.Component {
                 </header>
             </div>
         }
-        else if(this.props.status === 1) {
+        else if(this.state.userStatus === 1) {
             return <div class="Header-NavBar">
                 <header role="banner" class="Header-wrap">
                     <h1 class = "pulsate"> Retro Cinema</h1>

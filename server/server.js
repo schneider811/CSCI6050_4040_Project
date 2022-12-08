@@ -57,6 +57,7 @@ app.post('/addPromo', (req, res) => {
     res.send("Promo Added!");
 });
 
+
 app.post('/email', async (req, res) => {
     if(err) throw err;
     res.send('Confirmation Email Sent');
@@ -95,6 +96,15 @@ app.post('/email', async (req, res) => {
 });
 
 
+app.get('/movieList', (req, res) => {
+    
+    getMovies(db).then(result => {
+        res.send(result);
+        console.log(result);
+    });
+});
+
+
 app.listen(port, () => {
     console.log("Listening to Server!");
 });
@@ -104,7 +114,7 @@ app.listen(port, () => {
 async function registerUser(userData, database) {
     await database.query(
         "INSERT INTO users (first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [userData.first_name, userData.last_name, userData.phone, userData.email, 0, 1, 3, userData.password, userData.birthdate], 
+        [userData.first_name, userData.last_name, userData.phone, userData.email, 0, 2, 2, userData.password, userData.birthdate], 
         (err, res) => {
             console.log(err);
             console.log(res);
@@ -145,6 +155,17 @@ async function addPromo(promoData, database) {
         [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
         (err, res) => {
             console.log(err);
+        }
+    )
+}
+
+async function getMovies(database) {
+    
+    await database.query(
+        "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            return result;
         }
     )
 }

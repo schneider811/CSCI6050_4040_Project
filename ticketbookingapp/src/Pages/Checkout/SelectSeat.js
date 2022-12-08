@@ -4,6 +4,9 @@ import navigateTo from "../../RenderElements/RenderPage";
 import PaymentProcess from "./PaymentProcess";
 
 class SelectSeat extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return  (
             <div class="SelectSeat">

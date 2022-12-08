@@ -11,6 +11,9 @@ var promoEnd;
 var percentage;
 
 class AddPromo extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return (
             <div class = "promo">

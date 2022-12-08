@@ -10,11 +10,26 @@ var movieSelected;
 var roomSelected;
 
 class ScheduleMovie extends React.Component {
+    constructor( props ) {
+        super(props);
+        this.state = {moviesAdded: [], theatresAvailable: []};
+
+    }
+    async componentDidMount() {
+        const mainList = await Axios.get("http://localhost:3001/movieList").then(response => {
+            console.log(response.data.value);
+        })
+
+        
+        
+    }
+
+
     render() {
         return (
             <div class = "bottom-middle">
                 <form class = "schedule">
-                    <label for="dateOfMovie"> Date of Movie</label>
+                    <label for="dateOfMovie"> Date of Movie: </label>
                     <input type="date" min="2022-12-09" 
                     onChange={(e) => {
                         movieDate = e.target.value;
@@ -32,8 +47,7 @@ class ScheduleMovie extends React.Component {
                     onChange={(e) => {
                         movieSelected = e.target.value;
                     }}>
-                        <option value="Tarzan">Tarzan</option>
-                        <option value="Toy Story">Toy Story</option>
+                        {this.state.moviesAdded.map((movie) => <option value={movie.title.toString()}>{movie.title.toString()}</option>)}
                     </select>
                     <br></br>
 
