@@ -75,7 +75,7 @@ class SelectShowtime extends React.Component {
 
             </div>
 
-            </div>
+   
         ); 
 
     }
