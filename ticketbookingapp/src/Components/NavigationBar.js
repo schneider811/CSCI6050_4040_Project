@@ -31,9 +31,6 @@ class NavigationBar extends React.Component {
                             <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
                         </li>
                         <li class="NavBarButton">
-                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
-                        </li>
-                        <li class="NavBarButton">
                             <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
                         </li>
                         <li class="NavBarButton">
@@ -56,9 +53,6 @@ class NavigationBar extends React.Component {
                             <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
                         </li>
                         <li class="NavBarButton">
-                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
-                        </li>
-                        <li class="NavBarButton">
                             <button type="button" onClick={() => {navigateTo(ProfileView)}}>View Profile</button>
                         </li>
                     </ul>
@@ -76,9 +70,6 @@ class NavigationBar extends React.Component {
                         </li>
                         <li class="NavBarButton">
                             <button type="button" onClick={() => {navigateTo(Search)}}>Search</button>
-                        </li>
-                        <li class="NavBarButton">
-                            <button type="button" onClick={() => {navigateTo(Contact)}} >Contact Us</button>
                         </li>
                         <li class="NavBarButton">
                             <button type="button" onClick={() => {navigateTo(SignIn)}}>Login/Register</button>

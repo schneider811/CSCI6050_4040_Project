@@ -7,7 +7,6 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {listOfMovies: []};
-
     }
 
     componentDidMount() {
@@ -20,8 +19,9 @@ class Search extends React.Component {
             
         });
         
-        
     }
+
+    
 
     render() {
         return <div id="Search">
