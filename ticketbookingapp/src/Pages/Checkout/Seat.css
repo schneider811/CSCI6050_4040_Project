@@ -41,6 +41,7 @@
 
 
 .seat .tooltiptext {
+
     visibility: hidden;
     width: 30px;
     background-color: #e0b637;
@@ -54,10 +55,10 @@
     position: absolute;
     z-index: 1;
 }
+
 .seat:hover .tooltiptext {
     visibility: visible;
 }
-
 
 #seat-btn {
     background-color: #BA1313;
@@ -71,4 +72,20 @@
 
 #seat-btn:hover {
     background-color: #658C3D;
+}
+
+.ticket-drop {
+    padding: 10px;
+    margin: 10px;
+    background-color:#e0b637;
+    color: white;
+    font-family: 'Alatsi';
+}
+
+
+.ticket-num {
+    background-color: rgba(0, 0, 0, 0.426);
+    color: white;
+    border-style: solid ;
+    border-color: #e0b637;
 }

@@ -10,6 +10,7 @@ class SelectSeat extends React.Component {
     render() {
 
 
+
    
         return  (
 
@@ -60,7 +61,22 @@ class SelectSeat extends React.Component {
                     </div>
                 </div>
 
-               
+
+                <select id = "adults" name = "adults" class = "ticket-drop">
+                    <option value = "adults">Adults</option>
+                </select>
+                <input type = "number" class = "ticket-num"></input><br></br>
+
+                <select id = "kids" name = "kids" class = "ticket-drop">
+                    <option value = "kids">Kids</option>
+                </select>
+                <input type = "number" class = "ticket-num"></input><br></br>
+
+                <select id = "seniors" name = "seniors" class = "ticket-drop">
+                    <option value = "seniors">Seniors</option>
+                </select>
+                <input type = "number" class = "ticket-num"></input> <br></br>
+
                 
                 <button id = "seat-btn" onClick={() => {navigateTo(PaymentProcess)}}> Submit</button>
             </div>
