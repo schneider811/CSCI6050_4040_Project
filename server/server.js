@@ -9,8 +9,6 @@ const sessions = require('express-session');
 const port = 3001;
 const oneDay = 1000 * 60 * 60 * 24;
 var db = require('./database');
-const { get } = require('jquery');
-const { default: ScheduleMovie } = require('../ticketbookingapp/src/Pages/Admin/scheduleMovie');
 
 var session;
 
@@ -53,8 +51,9 @@ app.post('/addMovie', (req, res) => {
 });
 
 app.post('/scheduleMovie', (req, res) => {
-
-    sch
+    console.log("Potato");
+    console.log(req.body);
+     scheduleMovie(req.body, db);
 
 });
 
@@ -66,16 +65,14 @@ app.post('/addPromo', (req, res) => {
 });
 
 
-app.post('/email', async (req, res) => {
+app.post('/email',  (req, res) => {
     if(err) throw err;
     res.send('Confirmation Email Sent');
     const {email} = req.body.email;
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
         user: 'julie.rolfson28@ethereal.email', // generated ethereal user
         pass: '[D3UGHBFK68ExqF9znT', // generated ethereal password
@@ -85,13 +82,19 @@ app.post('/email', async (req, res) => {
 
     // send mail with defined transport object
     const msg = {
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        from: '"Cinema E-Site 👻" <foo@example.com>', // sender address
         to: `${email}`, // list of receivers
         subject: "Confirmation of Account", // Subject line
         text: "Hello, this is confirmation that your account has been registered!" // plain text body
     }
 
-    let info = await transporter.sendMail(msg);
+    let info =  transporter.sendMail(msg, function(err, data) {
+        if(err) {
+            console.log('Error Occurs');
+        } else {
+            console.log('Email sent successfully');
+        }
+    });
 
     console.log("Message sent: %s", info.messageId);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
@@ -108,6 +111,38 @@ app.get('/movieList', function (req, res) {
     
     db.query(
         "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.post('/specificMovie', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie WHERE movie_id IN (?)", [req.body.movie_id],
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.get('/scheduledMovieList', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie WHERE movie_id IN (SELECT movie_id FROM movie_show) ",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.post('/showtimes', function ( req, res ) {
+    db.query(
+        "SELECT * from movie_show WHERE movie_id IN (?)",[req.body.movie_id],
         function(err,result, fields) {
             if (err) throw err;
             res.send(result);
@@ -176,24 +211,24 @@ async function addMovie(movieData, database) {
        }
 }
 
-async function schdeuleMovie(schMovieData, database) {
-    if( schMovieData.date != null &&
-        schMovieData.startTime != null &&
-        schMovieData.movie != null &&
-        schMovieData.room != null )
-    {
+async function scheduleMovie(schMovieData, database) {
+    // if( schMovieData.date != null &&
+    //     schMovieData.startTime != null &&
+    //     schMovieData.movie != null &&
+    //     schMovieData.room != null )
+    // {
         await database.query(
-            "INSERT INTO movie_show (dates, times, movie_id, room_id) VALUES (?, ?, ?, ?)",
-            [schMovieData.date, schMovieData.startTime, schMovieData.movie, schMovieData.room], 
+            "INSERT INTO movie_show (dates, scheduledTime, movie_id, room_id) VALUES (?, ?, ?, ?)",
+            [schMovieData.date, schMovieData.startTime, schMovieData.movie, 1], 
             (err, res) => {
                 console.log(err);
             }
         )
         console.log("Movie Scheduled!");
-    }
-    else {
-        console.log("Invalid Info for New Scheduled Movie!")
-    }
+    // // }
+    // // else {
+    //     console.log("Invalid Info for New Scheduled Movie!")
+    // }
 }
 
 async function addPromo(promoData, database) {

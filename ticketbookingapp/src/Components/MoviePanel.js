@@ -4,31 +4,42 @@ import Checkout from "../Pages/Checkout/Checkout"
 import './MoviePanelStyle.css'
 
 
-function MoviePanel(params) {
-    return( <div className = "poster">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-
+class MoviePanel extends React.Component {
+    constructor( props ) {
+        super( props );
         
-        <div class = "image-card">
-            <img src = {require("./jurassicpark.png")}></img> 
-        </div>
-
-        <p class = "title"> {params.name} </p>
-
-        <div class = "ratings">
-            <span class="heading">User Rating</span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-        </div>
+        this.state = {title: props.title, imagePath: props.imageSrc, trailerLink: props.trailer, isScheduled: props.scheduled};
+    }
 
 
-    
-        <button class = "book" onClick={() => {navigateTo(Checkout)}}> Book</button>
-        <button class = "trailer" onClick={() => {window.open("https://www.youtube.com/watch?v=fb5ELWi-ekk");}}> Trailer</button>
-        <button class = "info">Info</button>
-    </div>);
+
+    render() {
+        return( 
+            <div className = "poster">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+
+                <div class = "image-card">
+                    <img src = {require("../MoviePosters/" + this.state.imagePath)}></img> 
+                </div>
+
+                <p class = "title"> {this.state.title} </p>
+
+                <div class = "ratings">
+                    <span class="heading">User Rating</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+
+
+                { this.state.isScheduled ? <button class = "book" onClick={() => {navigateTo(Checkout)}}> Book</button> : ""}
+               
+                
+                <button class = "trailer" onClick={() => {window.open(this.state.trailerLink)}}> Trailer</button>
+            </div>
+        );
+    }
 }
 
 

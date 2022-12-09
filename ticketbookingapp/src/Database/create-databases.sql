@@ -27,7 +27,7 @@ CREATE TABLE showroom(
   seats int NOT NULL,
   PRIMARY KEY (room_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO showroom VALUES (1, 25);
+INSERT INTO showroom VALUES (1, 30);
 
 CREATE TABLE theater(
   theater_id int NOT NULL AUTO_INCREMENT,
@@ -91,7 +91,7 @@ CREATE TABLE users(
   status_id int null,
   acc_type_id int not null,
   birthdate bigint not null,
-  PRIMARY KEY (user_id)
+  PRIMARY KEY (user_id),
   foreign key (status_id) references accountstatus(status_id),
   foreign key (acc_type_id) references accounttype(acc_type_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -119,7 +119,7 @@ CREATE TABLE ticket(
 CREATE TABLE movie_show(
   show_id int NOT NULL AUTO_INCREMENT,
   dates varchar(50) NOT NULL,
-  times time NOT NULL,
+  scheduledTime time NOT NULL,
   movie_id int NOT NULL,
   room_id int NOT NULL,
   PRIMARY KEY (show_id),

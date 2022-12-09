@@ -1,7 +1,7 @@
 import React from "react";
 import "./Seat.css"
 import $ from 'jquery';
-import navigateTo from "../RenderPage";
+import navigateTo from "../../RenderElements/RenderPage";
 import PaymentProcess from "./PaymentProcess";
 
 class SelectSeat extends React.Component {
