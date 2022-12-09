@@ -71,14 +71,17 @@
     height: fit-content;
 }
 
-.login {
-    background: #e3dcc9;
-    box-sizing: border-box;
-    padding: 40px;
-    clear: both;
-    width: 100%;
-    height: fit-content;
+.submitReg {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    float: right;
+    font-family: 'Alatsi';
+    margin-top: -30px;
+    color: white;
+
 }
+
 
 .register {
     background: #e3dcc9;

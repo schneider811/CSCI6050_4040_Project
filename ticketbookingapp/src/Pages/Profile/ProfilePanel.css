@@ -90,6 +90,7 @@
     float: right;
     font-family: 'Alatsi';
     margin-top: 10px;
+    color: white;
 }
 
 #confirm-bill-btn {
@@ -98,6 +99,7 @@
     padding: 15px;
     float: right;
     font-family: 'Alatsi';
+    color: white;
 }
 
 #edit-profile-btn {
@@ -106,6 +108,7 @@
     padding: 15px;
     float: right;
     font-family: 'Alatsi';
+    color: white;
 }
 
 #edit-bill-btn {
@@ -113,6 +116,8 @@
     border: none;
     padding: 10px;
     font-family: 'Alatsi';
+    color: white;
+    margin: 20px;
 
 
 }
@@ -121,6 +126,8 @@
     border: none;
     padding: 10px;
     font-family: 'Alatsi';
+    color: white;
+    margin: 20px;
 
 }
 
@@ -129,6 +136,7 @@
     border: none;
     padding: 15px;
     font-family: 'Alatsi';
+    color: white;
 
 }
 

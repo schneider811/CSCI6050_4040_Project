@@ -1,5 +1,5 @@
 import React from "react";
-import "./Checkout.css"
+import "./Payment.css"
 
 
 class PaymentProcess extends React.Component {
@@ -8,57 +8,57 @@ class PaymentProcess extends React.Component {
     }
     render() {
         return  (
-            <div class = "input-box" id="Checkout-Process">
+            <div class = "input-box" id="checkout-process">
 
-            <div class="box-header">
-                <h2> Billing Address</h2>
-            </div>
+                <div class="pay-header">
+                    <h2> Billing Address</h2>
+                </div>
+
+                <div class = "add-pay">
+                    <form>
+                        <label for="email"> Address: *</label><br/>
+                        <input type="text" id="email" name="email"/><br/>
+                        <label for="fname">First name: *</label><br/>
+                        <input type="text" id="fname" name="fname"/><br/>
+                        <label for="lname">Last name: *</label><br/>
+                        <input type="text" id="lname" name="lname"/><br/>
+
+                        <label for="birthday">State: *</label> <br/>
+                        <input type="text" id="lname" name="lname"/><br/>
+
+                        <label for="birthday">City: *</label> <br/>
+                        <input type="text" id="lname" name="lname"/><br/>
+
+                        <label for="birthday">Zip Code: *</label> <br/>
+                        <input type="text" id="lname" name="lname"/><br/>
+
+                    </form>
+                </div>
+                
 
 
-            <form/>
-                <label for="email"> Address: *</label><br/>
-                <input type="text" id="email" name="email"/><br/>
-                <label for="fname">First name: *</label><br/>
-                <input type="text" id="fname" name="fname"/><br/>
-                <label for="lname">Last name: *</label><br/>
-                <input type="text" id="lname" name="lname"/><br/>
+                <div class="pay-header">
+                    <h2> Card Information</h2>
+                </div>
 
-                <label for="birthday">State: *</label> <br/>
-                <input type="text" id="lname" name="lname"/><br/>
+                <div class = "credit-pay">
+                    <form>
+                        <label for="fname">Full name on Card: *</label><br/>
+                        <input type="text" id="fname" name="fname"/><br/>
+                        <label for="email"> Card Number: *</label><br/>
+                        <input type="text" id="email" name="email"/><br/>
+                        <label for="fname">Exp Date: *</label><br/>
+                        <input type="text" id="fname" name="fname"/><br/>
+                        <label for="lname">CVC Code *</label><br/>
+                        <input type="text" id="lname" name="lname"/><br/>
 
-                <label for="birthday">City: *</label> <br/>
-                <input type="text" id="lname" name="lname"/><br/>
+                        <label for="birthday">Zip Code: *</label> <br/>
+                        <input type="text" id="lname" name="lname"/><br/>
 
-                <label for="birthday">ZipCode: *</label> <br/>
-                <input type="text" id="lname" name="lname"/><br/>
 
-                <br></br>
-                <input type="radio" id="proms" name="proms"/>
-                <label for="proms"> Subscribe to the email list for promotions</label>
-
-            <form/>
-            <br></br>
-
-            <div class="box-header">
-                <h2> Card Information</h2>
-            </div>
-            <form/>
-                <label for="fname">Full name on Card: *</label><br/>
-                <input type="text" id="fname" name="fname"/><br/>
-                <label for="email"> Card Number: *</label><br/>
-                <input type="text" id="email" name="email"/><br/>
-                <label for="fname">Exp Date: *</label><br/>
-                <input type="text" id="fname" name="fname"/><br/>
-                <label for="lname">CVC Code *</label><br/>
-                <input type="text" id="lname" name="lname"/><br/>
-
-                <label for="birthday">ZipCode: *</label> <br/>
-                <input type="text" id="lname" name="lname"/><br/>
-
-                <p>* indicates that the field is requried when creating an account</p>
-            <form/>
-
-            <button> Submit</button>
+                    </form>
+                </div>
+                <button id = "pay-btn"> Submit</button>
             </div>
             
 

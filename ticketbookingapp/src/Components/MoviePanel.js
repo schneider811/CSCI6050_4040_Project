@@ -8,6 +8,7 @@ function MoviePanel(params) {
     return( <div className = "poster">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
+        
         <div class = "image-card">
             <img src = {require("./jurassicpark.png")}></img> 
         </div>
@@ -25,7 +26,8 @@ function MoviePanel(params) {
 
     
         <button class = "book" onClick={() => {navigateTo(Checkout)}}> Book</button>
-        <button class = "trailer" onClick={() => {window.open(params.url);}}> Trailer</button>
+        <button class = "trailer" onClick={() => {window.open("https://www.youtube.com/watch?v=fb5ELWi-ekk");}}> Trailer</button>
+        <button class = "info">Info</button>
     </div>);
 }
 
