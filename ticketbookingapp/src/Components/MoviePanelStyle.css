@@ -12,6 +12,7 @@
     border-style:groove;
     border-color: #ac944e;
     border-width: 1em;
+    margin: 20px;
 }
 
 .title{
@@ -24,7 +25,7 @@
 
 }
 
-button {
+.book, .trailer, .info{
    margin: 20px;
    margin-top: 50px;
    position:relative;
@@ -33,7 +34,7 @@ button {
    border-color: var(--theatreRed);
 }
 
-button:hover {
+.book:hover, .trailer:hover, .info:hover {
     margin: 20px;
     margin-top: 50px;
     position:relative;
@@ -49,7 +50,7 @@ img {
 }
 
 li.MoviePanel {
-    Padding: 1em;
+    padding: 1em;
 }
 
 .ratings {

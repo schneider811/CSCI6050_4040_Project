@@ -3,8 +3,6 @@
     src: url('../../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
   }
 
-
-
 .timing {
     background-color: #e3dcc9;
     font-family: 'Alatsi';
@@ -52,3 +50,4 @@
     background-color: white;
     border-style: solid white;
 }
+

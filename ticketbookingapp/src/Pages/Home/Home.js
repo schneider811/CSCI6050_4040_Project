@@ -17,26 +17,26 @@ class Home extends React.Component {
             <h2>Now Playing</h2>
             <ul class="Carousel-NowPlaying" role="region">
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic Park" image="jurassic.jpg"/>
+                    <MoviePanel name="Jurassic Park" imgURL="jurassic.jpeg"/>
                 </li>
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic Park II" image="jurassicpark.png"/>
+                    <MoviePanel name="Jurassic Park II" image="jurassic.jpeg"/>
                 </li>
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic Park III" image="jurassicpark.png"/>
+                    <MoviePanel name="Jurassic Park III" image="jurassic.jpeg"/>
                 </li>
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic World" image="jurassicpark.png"/>
+                    <MoviePanel name="Jurassic World" image="jurassic.jpeg"/>
                 </li>
             </ul>
 
             <h2>Coming Soon</h2>
             <ul class="Carousel-ComingSoon" role="region">
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic World Fallen Kingdom" image="jurassicpark.png"/>
+                    <MoviePanel name="Jurassic World Fallen Kingdom" image="jurassic.jpeg"/>
                 </li>
                 <li class="MoviePanel">
-                    <MoviePanel name="Jurassic World Dominion" image="jurassicpark.png"/>
+                    <MoviePanel name="Jurassic World Dominion" image="jurassic.jpeg"/>
                 </li>
             </ul>
         </div>

@@ -24,6 +24,7 @@ function ProfilePanel() {
         $(".settings").hide();
         $(".edit-profile-info").hide();
         $(".edit-billing").hide();
+        $(".profile-info").show();
         $(".pa-info").css("background", "#b1a37a");
         $(".set").css("background", "#b1a37a");
         $(".pf-info").css("background", "#ac944e");

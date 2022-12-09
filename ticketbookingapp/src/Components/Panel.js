@@ -124,7 +124,7 @@ function Panel() {
                     <label for="sign"> Keep me signed in</label> <br/>
                     <p>* indicates that the field is requried when logging in</p>
 
-                    <button onClick={loginUser} type = "submit"> Submit</button>
+                    <button class="submitReg"> Submit</button>
                 </form>
 
 

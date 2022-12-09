@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+}
 .theater {
     transform: translate(33%, 20%);
 
@@ -33,6 +36,39 @@
 }
 
 .seat:hover {
-    background-color: white;
+    background-color: #e0b637;
 }
 
+
+.seat .tooltiptext {
+    visibility: hidden;
+    width: 30px;
+    background-color: #e0b637;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: 'Alatsi';
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.seat:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+#seat-btn {
+    background-color: #BA1313;
+    border-color: #BA1313;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+    font-family: 'Alatsi';
+    color: white;
+}
+
+#seat-btn:hover {
+    background-color: #658C3D;
+}
