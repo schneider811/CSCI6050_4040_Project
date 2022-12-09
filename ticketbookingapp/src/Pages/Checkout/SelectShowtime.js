@@ -53,26 +53,13 @@ class SelectShowtime extends React.Component {
                     <h3> Seats Taken: 0/30 </h3>
                 </div>
 
-
-                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
-                    <h3>4 00 PM</h3>
-                    <p> Movie Title</p>
-                    <h3> Seats Taken: 0/30 </h3>
-                </div>
-
-
                 <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
                     <h3>7 00 PM</h3>
                     <p> Movie Title</p>
                     <h3> Seats Taken: 0/30 </h3>
                 </div>
 
-                <div class = "timing" onClick={() => {navigateTo(SelectSeat)}}>
-                    <h3>10 00 PM</h3>
-                    <p> Movie Title</p>
-                    <h3> Seats Taken: 0/30 </h3>
-                </div>
-
+           
             </div>
 
    
