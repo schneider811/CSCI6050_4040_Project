@@ -38,7 +38,7 @@ class AddMovie extends React.Component {
                     <br></br>
                     
                     <label for="add"> Movie Duration:</label>
-                    <input type="time" id="add-duration" name="add-duration" step="2"
+                    <input type="time" id="add-duration" name="add-duration" min="13:00" max="17:00"
                     onChange = {(e) => {
                         movieDuration = e.target.value;
                     }}/>

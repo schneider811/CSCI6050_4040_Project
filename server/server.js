@@ -9,6 +9,8 @@ const sessions = require('express-session');
 const port = 3001;
 const oneDay = 1000 * 60 * 60 * 24;
 var db = require('./database');
+const { get } = require('jquery');
+const { default: ScheduleMovie } = require('../ticketbookingapp/src/Pages/Admin/scheduleMovie');
 
 var session;
 
@@ -46,15 +48,21 @@ app.post('/logout',(req,res) => {
 app.post('/addMovie', (req, res) => {
 
     addMovie(req.body, db);
-    console.log("Movie Added!");
-    res.send("Movie Added!");
+    
+    
+});
+
+app.post('/scheduleMovie', (req, res) => {
+
+    sch
+
 });
 
 app.post('/addPromo', (req, res) => {
 
     addPromo(req.body, db);
-    console.log("Promo Added!");
-    res.send("Promo Added!");
+    
+    
 });
 
 
@@ -96,12 +104,15 @@ app.post('/email', async (req, res) => {
 });
 
 
-app.get('/movieList', (req, res) => {
+app.get('/movieList', function (req, res) {
     
-    getMovies(db).then(result => {
-        res.send(result);
-        console.log(result);
-    });
+    db.query(
+        "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
 });
 
 
@@ -140,32 +151,68 @@ async function loginUser(userData, database) {
 }
 
 async function addMovie(movieData, database) {
-    await database.query(
-        "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
-        (err, res) => {
-            console.log(err);
-        }
-    )
+    if(movieData.title != null &&
+       movieData.duration != null &&
+       movieData.category != null &&
+       movieData.cast != null &&
+       movieData.director != null &&
+       movieData.producer != null &&
+       movieData.synopsis != null && 
+       movieData.posterName != null &&
+       movieData.trailer != null )
+       {
+            await database.query(
+                "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
+                (err, res) => {
+                    console.log(err);
+                    
+                }
+            )
+            console.log("Movie Added!");
+       }
+       else{
+        console.log("Invalid Info for New Movie!")
+       }
+}
+
+async function schdeuleMovie(schMovieData, database) {
+    if( schMovieData.date != null &&
+        schMovieData.startTime != null &&
+        schMovieData.movie != null &&
+        schMovieData.room != null )
+    {
+        await database.query(
+            "INSERT INTO movie_show (dates, times, movie_id, room_id) VALUES (?, ?, ?, ?)",
+            [schMovieData.date, schMovieData.startTime, schMovieData.movie, schMovieData.room], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Movie Scheduled!");
+    }
+    else {
+        console.log("Invalid Info for New Scheduled Movie!")
+    }
 }
 
 async function addPromo(promoData, database) {
-    await database.query(
-        "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
-        [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
-        (err, res) => {
-            console.log(err);
-        }
-    )
+    if( promoData.promoCode != null &&
+        promoData.startDate != null &&
+        promoData.endDate != null &&
+        promoData.percentageOff != null )
+    {
+        await database.query(
+            "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
+            [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Promo Added!");
+    }
+    else {
+        console.log("Invalid Info for New Promo!")
+    }
 }
 
-async function getMovies(database) {
-    
-    await database.query(
-        "SELECT * from movie",
-        function(err,result, fields) {
-            if (err) throw err;
-            return result;
-        }
-    )
-}

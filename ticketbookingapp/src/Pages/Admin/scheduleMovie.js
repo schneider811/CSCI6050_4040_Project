@@ -2,6 +2,7 @@ import React from "react";
 import Axios from 'axios'
 import "../../Components/Panel.css"
 import "../../Components/AdminPanel.css"
+import { type } from "jquery";
 
 
 var movieDate;
@@ -15,15 +16,15 @@ class ScheduleMovie extends React.Component {
         this.state = {moviesAdded: [], theatresAvailable: []};
 
     }
-    async componentDidMount() {
-        const mainList = await Axios.get("http://localhost:3001/movieList").then(response => {
-            console.log(response.data.value);
+    componentDidMount() {
+        const movieList =  Axios.get("http://localhost:3001/movieList");
+        movieList.then((response) => {
+            this.setState({
+                moviesAdded: response.data
+            });
         })
-
-        
         
     }
-
 
     render() {
         return (
@@ -47,7 +48,9 @@ class ScheduleMovie extends React.Component {
                     onChange={(e) => {
                         movieSelected = e.target.value;
                     }}>
-                        {this.state.moviesAdded.map((movie) => <option value={movie.title.toString()}>{movie.title.toString()}</option>)}
+                    {
+                        this.state.moviesAdded.map((movie) => <option value={movie.title}>{movie.title}</option>)
+                    }
                     </select>
                     <br></br>
 
@@ -56,8 +59,7 @@ class ScheduleMovie extends React.Component {
                     onChange={(e) => {
                         roomSelected = e.target.value;
                     }}>
-                        <option value="3D">3D</option>
-                        <option value="Regular">Regular</option>
+                        <option value="regular">Regular (30 seats)</option>
                     </select>
                     <br></br>
 
@@ -66,6 +68,18 @@ class ScheduleMovie extends React.Component {
             </div>
         )
     }
+}
+
+async function scheduleMovie() {
+    const newScheduleMovie = {
+        date: movieDate,
+        startTime: movieStartTime,
+        movie: movieSelected,
+        room: roomSelected,
+    }
+    
+    const newMovieResponse = await Axios.post("http://localhost:3001/scheduleMovie", newScheduleMovie);
+    
 }
 
 
