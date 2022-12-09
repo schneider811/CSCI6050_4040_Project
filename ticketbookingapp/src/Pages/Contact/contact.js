@@ -12,7 +12,7 @@ class Contact extends React.Component {
         <h2>Have something to say? Contact us!</h2>
 
         <div action = "contact-div">
-            <form action="https://formsubmit.co/CSCI6050_4050@cinema.com" method="POST"/>
+            <form action="https://formsubmit.co/keith.schneider811@gmail.com" method="POST"/>
                 <input type="hidden" name="_subject" value="New Email from website"/>
                 <input type="email" name="email" placeholder="Email Address" required/>
                 <input type="hidden" name="_next" value=".\ticketbookingapp\src\Pages\Email\thankyou.html"/>
