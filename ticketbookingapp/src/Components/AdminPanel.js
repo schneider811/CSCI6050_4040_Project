@@ -1,140 +1,102 @@
 import $ from 'jquery';
 import React from "react";
-import Axios from 'axios'
 import './Panel.css'
 import './AdminPanel.css'
+import AddPromo from '../Pages/Admin/addPromo'
+import AddMovie from '../Pages/Admin/addMovie'
+import ScheduleMovie from '../Pages/Admin/scheduleMovie'
 
 
+class AdminPanel extends React.Component {
+    constructor ( props ) {
+        super(props);
+        this.state = {adminControlShown: 0};
 
-function Panel() {
+        this.showAddMovie = this.showAddMovie.bind(this);
+        this.showScheduleMovie = this.showScheduleMovie.bind(this);
+        this.showAddPromo = this.showAddPromo.bind(this);
+    }
 
-    $(document).ready(function(){
-        $(".bottom-right").hide();
-        $(".bottom-middle").hide();
-        $(".middle").css("background", "#b1a37a");
-        $(".right").css("background", "#b1a37a");
+
+    showAddMovie() {
+        this.setState(() => ({
+            adminControlShown: 0
+        }));
+    }
+    showScheduleMovie() {
+        this.setState(() => ({
+            adminControlShown: 1
+        }));
+    }
+    showAddPromo() {
+        this.setState(() => ({
+            adminControlShown: 2
+        }));
+    }
     
-        $(".right").click(function(){
-            $(".bottom-left").hide();
-            $(".bottom-middle").hide();
-            $(".bottom-right").show();
-            $(".left").css("background", "#b1a37a");
-            $(".middle").css("background", "#b1a37a");
-            $(".right").css("background", "#ac944e");
-        });
-    
-        $(".left").click(function(){
-            $(".bottom-left").show();
-            $(".bottom-right").hide();
-            $(".bottom-middle").hide();
-            $(".left").css("background", "#ac944e");
-            $(".right").css("background", "#b1a37a");
-            $(".middle").css("background", "#b1a37a");
-
-        });
-
-        $(".middle").click(function(){
-            $(".bottom-middle").show();
-            $(".bottom-left").hide();
-            $(".bottom-right").hide();
-            $(".middle").css("background", "#ac944e");
-            $(".right").css("background", "#b1a37a");
-            $(".left").css("background", "#b1a37a");
-        });
-
+    render() {
+        $(document).ready(function(){
+            
+            
         
-
-        
-        
-    
-    });
-
-    return(
-        
-        <div class = "container">
-
-            <div id = "error"> </div>
-
-            <div class = "left" id = "left-admin"> Movie Controls</div>
-            <div class = "middle" id = "middle-admin"> User Controls</div>
-            <div class = "right" id = "left-admin"> Promotion Controls</div>
-
-
-            <div class = "bottom-left">
+            $(".right").click(function(){
                 
-                <label for="movie-actions"> Control Action:</label>
-                <select>
-                    <option value = "add">Add</option>
-                    <option value = "edit">Edit</option>
-                    <option value = "del">Delete</option>
-                </select>
-
-                        
-                <form class = "admin">
-
-                    <label for="add"> Add New Movie Name:</label>
-                    <input type="text" id="add-name" name="add-name"/>
-                    <br></br>
-
-                    <label for="info"> Add New Movie Info:</label>
-                    <input type="text" id="add-info" name="add-info"/>
-                    <br></br>
-
-                    <label for="link"> Add New Movie Trailer:</label>
-                    <input type="url" id="add-url" name="add-url"/>
-                    <br></br>
-
-                    <label for="del">Delete Movie:</label>
-                    <input type="text" id="del-movie" name="del-movie"/>
-                    <br></br>
-
-                    <button id = "movie-button"> Execute</button>
-                </form>
+                $(".left").css("background", "#b1a37a");
+                $(".middle").css("background", "#b1a37a");
+                $(".right").css("background", "#ac944e");
+            });
+        
+            $(".left").click(function(){
                 
-            </div>
+                $(".left").css("background", "#ac944e");
+                $(".right").css("background", "#b1a37a");
+                $(".middle").css("background", "#b1a37a");
 
-            <div class = "bottom-middle">
+            });
+
+            $(".middle").click(function(){
+                
+                $(".middle").css("background", "#ac944e");
+                $(".right").css("background", "#b1a37a");
+                $(".left").css("background", "#b1a37a");
+            });
+        });
+            
+        const panelValue = this.state.adminControlShown;
+        let newPanel;
+        if( panelValue === 0 )
+        {
+            newPanel = <AddMovie></AddMovie>
+        }
+        else if( panelValue === 1 )
+        {
+            newPanel = <ScheduleMovie></ScheduleMovie>
+        }
+        else if( panelValue === 2 )
+        {
+            newPanel = <AddPromo></AddPromo>
+        }
+
+        return(
+            
+            <div class = "container">
+
+                <div id = "error"> </div>
+
+                <div class = "left" id = "left-admin" onClick={this.showAddMovie}> Movie Controls</div>
+                <div class = "middle" id = "middle-admin" onClick={this.showScheduleMovie}> Schedule Movie</div>
+                <div class = "right" id = "left-admin" onClick={this.showAddPromo}> Promotion Controls</div>
+
+                {newPanel}
+                                
 
             </div>
-
-
-
-
-
-
-
-            <div class = "bottom-right">
-                
-                   
-                <form class = "admin">
-                    <label for="prom"> Promotion Name:</label><br/>
-                    <input type="text" id="prom-name" name="prom-name"/><br/>
-
-                    <label for="discount">Discount Rate:</label><br/>
-                    <input type="number" id="discount" name="discount"/><br/>
-
-                    <label for="prom-start">Promotion Start Date:</label> <br/>
-                    <input type="date" id="prom-start" name="prom-start"/><br/>
-
-                    <label for="prom-end">Promotion End Date:</label> <br/>
-                    <input type="date" id="prom-end" name="prom-end"/><br/>
-
-                    <button id = "prom-button"> Execute</button>
-                </form>
 
             
-            </div>
-
-
-            
-
-        </div>
-
-        
-    );
+        );
+    }
 }
 
 
 
-
-export default Panel
+export default AdminPanel

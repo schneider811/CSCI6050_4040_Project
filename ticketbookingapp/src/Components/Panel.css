@@ -4,7 +4,8 @@
 }
 
 .container {
-    width: 450px;
+    width: fit-content;
+    height: fit-content;
     margin: 100px auto;
    
 
@@ -38,6 +39,7 @@
     line-height: 60px;
     color: black;
     font-family: 'Alatsi';
+    
 }
 
 
@@ -46,23 +48,52 @@
 
 }
 
-.bottom-left {
+.right {
+    background-color: #b1a37a;
+}
+
+.newMovie {
     background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
     clear: both;
     width: 100%;
-    height: 400px;
+    height: fit-content;
 }
 
 
-.bottom-right {
+.promo {
     background: #e3dcc9;
     box-sizing: border-box;
     padding: 40px;
     clear: both;
     width: 100%;
-    height: 400px;
+    height: fit-content;
 }
 
+.login {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: fit-content;
+}
 
+.register {
+    background: #e3dcc9;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: fit-content;
+}
+
+button {
+    background-color: transparent;
+    color: black;
+    margin: 0.5em;
+    border: none;
+    font-weight:bolder;
+    font-family: 'Alatsi';
+}

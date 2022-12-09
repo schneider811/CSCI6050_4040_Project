@@ -4,9 +4,12 @@ import "./search.css";
 
 
 class Search extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return <div id="Search">
-            <form>
+            <form onSubmit={(e) => {e.preventDefault()}}>
                 <input type="search" placeholder="Search" id = "search-bar"></input>
             </form>
        

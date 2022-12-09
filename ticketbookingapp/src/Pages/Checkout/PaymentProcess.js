@@ -3,6 +3,9 @@ import "./Checkout.css"
 
 
 class PaymentProcess extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return  (
             <div class = "input-box" id="Checkout-Process">

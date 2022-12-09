@@ -5,7 +5,6 @@ USE `CSCI_6050_4050_TeamB9`;
 SET NAMES utf8 ;
 SET character_set_client = utf8mb4 ;
 
-
 CREATE TABLE movie(
   movie_id int NOT NULL AUTO_INCREMENT,
   title varchar(50) NOT NULL,
@@ -21,13 +20,13 @@ CREATE TABLE movie(
   rating varchar(4) NOT NULL,
   PRIMARY KEY (movie_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO movie VALUES (1,'Lord of the Rings','3:12:30','Fantasy','Sean AStin, Vigo Mortenson, Elijah Wood, Orlando Bloom','Peter Jackson','Harvey Weinstein','A Hobbit goes to destroy the ring of power','five out of five', 'this is a picture link', 'this is a trailer link', 'PG13');
 
 CREATE TABLE showroom(
   room_id int NOT NULL AUTO_INCREMENT,
   seats int NOT NULL,
   PRIMARY KEY (room_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO showroom VALUES (1, 25);
 
 CREATE TABLE theater(
   theater_id int NOT NULL AUTO_INCREMENT,
@@ -70,6 +69,19 @@ CREATE TABLE accountstatus(
 INSERT INTO accountstatus VALUES (1, 'active');
 INSERT INTO accountstatus VALUES (2, 'inactive');
 
+CREATE TABLE users(
+  user_id int NOT NULL AUTO_INCREMENT,
+  first_name TEXT not null,
+  last_name TEXT not null,
+  phone int not null,
+  email TEXT not null,
+  status_id int not null,
+  acc_type_id int not null,
+  PRIMARY KEY (user_id),
+  foreign key (status_id) references accountstatus(status_id),
+  foreign key (acc_type_id) references accounttype(acc_type_id)  
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE paymentcard(
   payment_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
@@ -77,25 +89,8 @@ CREATE TABLE paymentcard(
   billing_add text not null,
   exp_date text not null,
   PRIMARY KEY (payment_id)
+  foreign key (user_id) references users(user_id),
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-SET FOREIGN_KEY_CHECKS=0;
-CREATE TABLE users(
-  user_id int NOT NULL AUTO_INCREMENT,
-  first_name TEXT not null,
-  last_name TEXT not null,
-  phone bigint not null,
-  email TEXT not null,
-  pword varchar(255) not null,
-  payment_id int null,
-  status_id int null,
-  acc_type_id int not null,
-  birthdate bigint not null,
-  PRIMARY KEY (user_id)
-  foreign key (status_id) references accountstatus(status_id),
-  foreign key (acc_type_id) references accounttype(acc_type_id)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-SET FOREIGN_KEY_CHECKS=1;
 
 CREATE TABLE promotion(
   promo_id int NOT NULL AUTO_INCREMENT,
@@ -143,10 +138,8 @@ CREATE TABLE booking(
   foreign key (ticket_id) references ticket(ticket_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE user_lg(
-  user_lg_id int NOT NULL AUTO_INCREMENT,
-  user_id int NOT NULL,
-  PRIMARY KEY (user_lg_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
 

@@ -1,14 +1,18 @@
 //const insertData = require('insertData');
 const cors = require('cors');
 const express = require("express");
+var router = express.Router();
 const app = express();
-var mysql = require('mysql');
 const nodemailer = require('nodemon');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const port = 3001;
-var user_id = 0;
 const oneDay = 1000 * 60 * 60 * 24;
+var db = require('./database');
+const { get } = require('jquery');
+const { default: ScheduleMovie } = require('../ticketbookingapp/src/Pages/Admin/scheduleMovie');
+
+var session;
 
 app.use(express.json());
 app.use(cors());
@@ -16,42 +20,49 @@ app.use(sessions({
     secret: "thisisthekeyforthecsci4050project",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
-    resave: false
+    resave: true
 }))
 app.use(cookieParser());
 
-const db = mysql.createConnection({
-
-    host: "localhost",
-    user: "root",
-    password: "4050",
-    database: "CSCI_6050_4050_TeamB9"
-});
 
 app.set("port", process.env.PORT || port);
 
-db.connect(function(err) {
-    if(err) throw err;
-    console.log("Connected!");
-});
 
+
+// Database Access
 app.post('/register', (req, res) =>  {
-    user_id += 1;
-    res.send(req.body);
     registerUser(req.body,db);
+    res.send(req.body);
 
 });
 
 app.post('/login', (req, res) =>  {
     
-    res.send(req.body.first_name);
-    loginUser(req.body,db);
-
+    console.log(req.session);
 });
 
 app.post('/logout',(req,res) => {
     req.session.destroy();
-    res.redirect('/');
+});
+
+app.post('/addMovie', (req, res) => {
+
+    addMovie(req.body, db);
+    
+    
+});
+
+app.post('/scheduleMovie', (req, res) => {
+
+    sch
+
+});
+
+app.post('/addPromo', (req, res) => {
+
+    addPromo(req.body, db);
+    
+    
 });
 
 
@@ -93,28 +104,115 @@ app.post('/email', async (req, res) => {
 });
 
 
+app.get('/movieList', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+
 app.listen(port, () => {
     console.log("Listening to Server!");
 });
 
 
 
-function registerUser(userData, database) {
-    database.query(
-        "INSERT INTO users (user_id, first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [user_id, userData.first_name, userData.last_name, 0, userData.email, 1, 2, 3, userData.password, userData.birthdate], 
+async function registerUser(userData, database) {
+    await database.query(
+        "INSERT INTO users (first_name, last_name, phone, email, payment_id, status_id, acc_type_id, pword, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [userData.first_name, userData.last_name, userData.phone, userData.email, 0, 2, 2, userData.password, userData.birthdate], 
         (err, res) => {
-           // console.log(err);
+            console.log(err);
+            console.log(res);
         }
+       
     )
 }
 
-function loginUser(userData, database) {
-    database.query(
-        "SELECT (?) from users", [userData.email],
+async function loginUser(userData, database) {
+    var loginUser = "";
+    //console.log(userData);
+    await database.query(
+        "SELECT * from users WHERE email=?", [userData.email],
         (err, res) => {
-            //console.log(err);
-            console.log(res);
+            console.log(err);
+
+            // console.log(res);
+            // console.log("Test");
+            loginUser = res;
         }
     )
+    return loginUser
 }
+
+async function addMovie(movieData, database) {
+    if(movieData.title != null &&
+       movieData.duration != null &&
+       movieData.category != null &&
+       movieData.cast != null &&
+       movieData.director != null &&
+       movieData.producer != null &&
+       movieData.synopsis != null && 
+       movieData.posterName != null &&
+       movieData.trailer != null )
+       {
+            await database.query(
+                "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
+                (err, res) => {
+                    console.log(err);
+                    
+                }
+            )
+            console.log("Movie Added!");
+       }
+       else{
+        console.log("Invalid Info for New Movie!")
+       }
+}
+
+async function schdeuleMovie(schMovieData, database) {
+    if( schMovieData.date != null &&
+        schMovieData.startTime != null &&
+        schMovieData.movie != null &&
+        schMovieData.room != null )
+    {
+        await database.query(
+            "INSERT INTO movie_show (dates, times, movie_id, room_id) VALUES (?, ?, ?, ?)",
+            [schMovieData.date, schMovieData.startTime, schMovieData.movie, schMovieData.room], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Movie Scheduled!");
+    }
+    else {
+        console.log("Invalid Info for New Scheduled Movie!")
+    }
+}
+
+async function addPromo(promoData, database) {
+    if( promoData.promoCode != null &&
+        promoData.startDate != null &&
+        promoData.endDate != null &&
+        promoData.percentageOff != null )
+    {
+        await database.query(
+            "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
+            [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Promo Added!");
+    }
+    else {
+        console.log("Invalid Info for New Promo!")
+    }
+}
+

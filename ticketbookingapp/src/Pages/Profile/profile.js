@@ -3,6 +3,9 @@ import "./profile.css"
 import ProfilePanel from "./ProfilePanel";
 
 class ProfileView extends React.Component {
+    constructor( props ) {
+        super(props);
+    }
     render() {
         return <ProfilePanel></ProfilePanel>
     }
