@@ -9,8 +9,6 @@ const sessions = require('express-session');
 const port = 3001;
 const oneDay = 1000 * 60 * 60 * 24;
 var db = require('./database');
-const { get } = require('jquery');
-const { default: ScheduleMovie } = require('../ticketbookingapp/src/Pages/Admin/scheduleMovie');
 
 var session;
 
@@ -53,8 +51,9 @@ app.post('/addMovie', (req, res) => {
 });
 
 app.post('/scheduleMovie', (req, res) => {
-
-    sch
+    console.log("Potato");
+    console.log(req.body);
+     scheduleMovie(req.body, db);
 
 });
 
@@ -108,6 +107,17 @@ app.get('/movieList', function (req, res) {
     
     db.query(
         "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.get('/scheduledMovieList', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie WHERE movie_id IN (SELECT movie_id FROM movie_show) ",
         function(err,result, fields) {
             if (err) throw err;
             res.send(result);
@@ -176,24 +186,24 @@ async function addMovie(movieData, database) {
        }
 }
 
-async function schdeuleMovie(schMovieData, database) {
-    if( schMovieData.date != null &&
-        schMovieData.startTime != null &&
-        schMovieData.movie != null &&
-        schMovieData.room != null )
-    {
+async function scheduleMovie(schMovieData, database) {
+    // if( schMovieData.date != null &&
+    //     schMovieData.startTime != null &&
+    //     schMovieData.movie != null &&
+    //     schMovieData.room != null )
+    // {
         await database.query(
-            "INSERT INTO movie_show (dates, times, movie_id, room_id) VALUES (?, ?, ?, ?)",
-            [schMovieData.date, schMovieData.startTime, schMovieData.movie, schMovieData.room], 
+            "INSERT INTO movie_show (dates, scheduledTime, movie_id, room_id) VALUES (?, ?, ?, ?)",
+            [schMovieData.date, schMovieData.startTime, schMovieData.movie, 1], 
             (err, res) => {
                 console.log(err);
             }
         )
         console.log("Movie Scheduled!");
-    }
-    else {
-        console.log("Invalid Info for New Scheduled Movie!")
-    }
+    // // }
+    // // else {
+    //     console.log("Invalid Info for New Scheduled Movie!")
+    // }
 }
 
 async function addPromo(promoData, database) {
