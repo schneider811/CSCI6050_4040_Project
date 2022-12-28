@@ -58,6 +58,10 @@ class PaymentProcess extends React.Component {
 
                     </form>
                 </div>
+
+                <div>
+                    
+                </div>
                 <button id = "pay-btn"> Submit</button>
             </div>
             

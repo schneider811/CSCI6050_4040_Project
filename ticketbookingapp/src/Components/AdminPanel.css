@@ -11,14 +11,18 @@
 }
 
 #movie-button {
-    bottom: -46px;
     background-color: black;
+    color: white;
+    margin: 0.5em;
+    border: none;
+    font-weight:bolder;
     font-family: 'Alatsi';
 }
 
 #prom-button {
     top: -30px;
     background-color: black;
+    color: white;
     font-family: 'Alatsi';
 }
 #left-admin {
