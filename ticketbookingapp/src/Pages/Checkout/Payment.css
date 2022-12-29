@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+  }
+
+#checkout-process {
+    background-color: #e3dcc9;
+    margin-left: 40%;
+
+
+
+}
+
+.pay-header {
+    background-color:#ac944e;
+
+}
+
+
+
+.pay-header h2 {
+    color: black;
+    font-family: 'Alatsi';
+    text-decoration: none;
+}
+
+#pay-btn {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    float: right;
+    font-family: 'Alatsi';
+    color: white;
+    margin: 10px;
+}

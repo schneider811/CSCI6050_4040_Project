@@ -93,7 +93,7 @@ async function registerUser() {
     
 
     const response = await Axios.post("http://localhost:3001/register", newUser);
-    //const confirm = await Axios.post("http://localhost:3001/email", newUser);
+    // const confirm = await Axios.post("http://localhost:3001/email", newUser);
     //const loginResponse = await Axios.post("http://localhost:3001/login", prevUser);
     
 }

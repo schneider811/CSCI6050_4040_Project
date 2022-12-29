@@ -1,7 +1,8 @@
 import React from "react";
-import Axios from 'axios'
-import "../../Components/Panel.css"
-import "../../Components/AdminPanel.css"
+import Axios from 'axios';
+import "../../Components/Panel.css";
+import "../../Components/AdminPanel.css";
+import { type } from "jquery";
 
 
 var movieDate;
@@ -15,15 +16,17 @@ class ScheduleMovie extends React.Component {
         this.state = {moviesAdded: [], theatresAvailable: []};
 
     }
-    async componentDidMount() {
-        const mainList = await Axios.get("http://localhost:3001/movieList").then(response => {
-            console.log(response.data.value);
+    componentDidMount() {
+        const movieList =  Axios.get("http://localhost:3001/movieList");
+        movieList.then((response) => {
+            // console.log(response.data);
+            // console.log(response.data[0].movie_id);
+            this.setState({
+                moviesAdded: response.data
+            });
         })
-
-        
         
     }
-
 
     render() {
         return (
@@ -44,28 +47,44 @@ class ScheduleMovie extends React.Component {
 
                     <label for="movieScheduled"> Pick Movie to Schedule: </label>
                     <select name="moviesAvailable" id="moviesAvailable" 
-                    onChange={(e) => {
+                    onClick={(e) => {
                         movieSelected = e.target.value;
                     }}>
-                        {this.state.moviesAdded.map((movie) => <option value={movie.title.toString()}>{movie.title.toString()}</option>)}
+                    {
+                        this.state.moviesAdded.map((movie) => <option value={movie.movie_id}>{movie.title}</option>)
+                    }
                     </select>
                     <br></br>
 
                     <label for="roomScheduled"> Pick Room to Schedule movie in: </label>
                     <select name="roomsAvailable" id="roomsAvailable"
-                    onChange={(e) => {
+                    onClick={(e) => {
                         roomSelected = e.target.value;
                     }}>
-                        <option value="3D">3D</option>
-                        <option value="Regular">Regular</option>
+                        <option value="1">Regular (30 seats)</option>
                     </select>
                     <br></br>
 
-                    <button id = "movie-button">Schedule Movie</button>
+                    <button id = "movie-button" onClick={scheduleMovie}>Schedule Movie</button>
                 </form>
             </div>
         )
     }
+}
+
+async function scheduleMovie() {
+    
+    const newScheduleMovie = {
+        date: movieDate,
+        startTime: movieStartTime,
+        movie: movieSelected,
+        room: roomSelected
+    }
+    
+    
+    
+    const newMovieResponse = await Axios.post("http://localhost:3001/scheduleMovie", newScheduleMovie);
+    
 }
 
 

@@ -1,8 +1,53 @@
-h3 {
-    padding-left: 1em;
-    color: #D9D9D9;
+@font-face {
+    font-family: 'Alatsi';
+    src: url('../../fonts/Alatsi/Alatsi-Regular.ttf') format('truetype');
+  }
+
+.timing {
+    background-color: #e3dcc9;
+    font-family: 'Alatsi';
+    margin: 10px;
+    padding: 20px
 }
 
-select {
-    padding-left: 2em;
+.timing h3 {
+ 
+    color: black;
+    display: inline;
+    position: absolute;
+
+    
 }
+
+.timing p {
+    display: inline;
+    margin: 500px;
+
+}
+
+.timing:hover h3 {
+    color: red;
+}
+
+.timing:hover p {
+    color: red;
+}
+
+.timing:hover {
+    border-style: dotted;
+    border-color: black;
+}
+
+#show-date {
+    font-family:'Alatsi';
+    background-color: #e3dcc9;
+    color: red;
+    margin-left: 47%;
+}
+
+.seat {
+    cursor: pointer;
+    background-color: white;
+    border-style: solid white;
+}
+

@@ -46,28 +46,33 @@ app.post('/logout',(req,res) => {
 app.post('/addMovie', (req, res) => {
 
     addMovie(req.body, db);
-    console.log("Movie Added!");
-    res.send("Movie Added!");
+    
+    
+});
+
+app.post('/scheduleMovie', (req, res) => {
+    console.log("Potato");
+    console.log(req.body);
+     scheduleMovie(req.body, db);
+
 });
 
 app.post('/addPromo', (req, res) => {
 
     addPromo(req.body, db);
-    console.log("Promo Added!");
-    res.send("Promo Added!");
+    
+    
 });
 
 
-app.post('/email', async (req, res) => {
+app.post('/email',  (req, res) => {
     if(err) throw err;
     res.send('Confirmation Email Sent');
     const {email} = req.body.email;
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
         user: 'julie.rolfson28@ethereal.email', // generated ethereal user
         pass: '[D3UGHBFK68ExqF9znT', // generated ethereal password
@@ -77,13 +82,19 @@ app.post('/email', async (req, res) => {
 
     // send mail with defined transport object
     const msg = {
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        from: '"Cinema E-Site 👻" <foo@example.com>', // sender address
         to: `${email}`, // list of receivers
         subject: "Confirmation of Account", // Subject line
         text: "Hello, this is confirmation that your account has been registered!" // plain text body
     }
 
-    let info = await transporter.sendMail(msg);
+    let info =  transporter.sendMail(msg, function(err, data) {
+        if(err) {
+            console.log('Error Occurs');
+        } else {
+            console.log('Email sent successfully');
+        }
+    });
 
     console.log("Message sent: %s", info.messageId);
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
@@ -96,12 +107,47 @@ app.post('/email', async (req, res) => {
 });
 
 
-app.get('/movieList', (req, res) => {
+app.get('/movieList', function (req, res) {
     
-    getMovies(db).then(result => {
-        res.send(result);
-        console.log(result);
-    });
+    db.query(
+        "SELECT * from movie",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.post('/specificMovie', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie WHERE movie_id IN (?)", [req.body.movie_id],
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.get('/scheduledMovieList', function (req, res) {
+    
+    db.query(
+        "SELECT * from movie WHERE movie_id IN (SELECT movie_id FROM movie_show) ",
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
+});
+
+app.post('/showtimes', function ( req, res ) {
+    db.query(
+        "SELECT * from movie_show WHERE movie_id IN (?)",[req.body.movie_id],
+        function(err,result, fields) {
+            if (err) throw err;
+            res.send(result);
+        }
+    )
 });
 
 
@@ -140,32 +186,68 @@ async function loginUser(userData, database) {
 }
 
 async function addMovie(movieData, database) {
-    await database.query(
-        "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
-        (err, res) => {
-            console.log(err);
-        }
-    )
+    if(movieData.title != null &&
+       movieData.duration != null &&
+       movieData.category != null &&
+       movieData.cast != null &&
+       movieData.director != null &&
+       movieData.producer != null &&
+       movieData.synopsis != null && 
+       movieData.posterName != null &&
+       movieData.trailer != null )
+       {
+            await database.query(
+                "INSERT INTO movie (title, duration, category, cast, director, producer, synopsis, reviews, trailerpic, trailer_video, rating) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [movieData.title, movieData.duration, movieData.category, movieData.cast, movieData.director, movieData.producer, movieData.synopsis, "No reviews", movieData.posterName, movieData.trailer, "3/5"], 
+                (err, res) => {
+                    console.log(err);
+                    
+                }
+            )
+            console.log("Movie Added!");
+       }
+       else{
+        console.log("Invalid Info for New Movie!")
+       }
+}
+
+async function scheduleMovie(schMovieData, database) {
+    // if( schMovieData.date != null &&
+    //     schMovieData.startTime != null &&
+    //     schMovieData.movie != null &&
+    //     schMovieData.room != null )
+    // {
+        await database.query(
+            "INSERT INTO movie_show (dates, scheduledTime, movie_id, room_id) VALUES (?, ?, ?, ?)",
+            [schMovieData.date, schMovieData.startTime, schMovieData.movie, 1], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Movie Scheduled!");
+    // // }
+    // // else {
+    //     console.log("Invalid Info for New Scheduled Movie!")
+    // }
 }
 
 async function addPromo(promoData, database) {
-    await database.query(
-        "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
-        [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
-        (err, res) => {
-            console.log(err);
-        }
-    )
+    if( promoData.promoCode != null &&
+        promoData.startDate != null &&
+        promoData.endDate != null &&
+        promoData.percentageOff != null )
+    {
+        await database.query(
+            "INSERT INTO promotion (promo_code, startdate, enddate, percentoff) VALUES (?, ?, ?, ?)",
+            [promoData.promoCode, promoData.startDate, promoData.endDate, promoData.percentageOff], 
+            (err, res) => {
+                console.log(err);
+            }
+        )
+        console.log("Promo Added!");
+    }
+    else {
+        console.log("Invalid Info for New Promo!")
+    }
 }
 
-async function getMovies(database) {
-    
-    await database.query(
-        "SELECT * from movie",
-        function(err,result, fields) {
-            if (err) throw err;
-            return result;
-        }
-    )
-}
